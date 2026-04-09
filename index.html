@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gadgetify Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+body {
+  margin:0;
+  font-family: Arial;
+  background:#0f172a;
+  color:white;
+}
+
+.header {
+  background:#020617;
+  padding:15px;
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+}
+
+.products {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+.product {
+  background:#1e293b;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.product img {
+  width:100%;
+  border-radius:10px;
+}
+
+button {
+  margin-top:10px;
+  padding:10px;
+  width:100%;
+  border:none;
+  background:#22c55e;
+  color:white;
+  cursor:pointer;
+  border-radius:8px;
+}
+
+.cart {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#22c55e;
+  padding:15px;
+  border-radius:50px;
+  cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">Gadgetify Store 🛍️</div>
+
+<div class="products">
+
+<div class="product">
+<img src="https://via.placeholder.com/200">
+<h3>Wireless Earbuds</h3>
+<p>Rs. 1999</p>
+<button onclick="addToCart('Earbuds',1999)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://via.placeholder.com/200">
+<h3>Smart Watch</h3>
+<p>Rs. 2999</p>
+<button onclick="addToCart('Watch',2999)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://via.placeholder.com/200">
+<h3>Fast Charger</h3>
+<p>Rs. 999</p>
+<button onclick="addToCart('Charger',999)">Add to Cart</button>
+</div>
+
+</div>
+
+<div class="cart" onclick="checkout()">🛒 Cart</div>
+
+<script>
+let cart = [];
+
+function addToCart(name, price){
+  cart.push({name, price});
+  alert(name + " added to cart!");
+}
+
+function checkout(){
+  let message = "Order Details:%0A";
+  let total = 0;
+
+  cart.forEach(item => {
+    message += item.name + " - Rs." + item.price + "%0A";
+    total += item.price;
+  });
+
+  message += "Total: Rs." + total;
+
+  window.open("https://wa.me/923XXXXXXXXX?text=" + message);
+}
+</script>
+
+</body>
+</html>
