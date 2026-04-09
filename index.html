@@ -19,7 +19,7 @@
     nav a {color:white; text-decoration:none; font-weight:500; font-size:15px; transition:0.2s}
     nav a:hover {color:var(--secondary)}
     .hero {background:linear-gradient(rgba(37,99,235,0.9),rgba(30,64,175,0.9)),url('https://images.unsplash.com/photo-1557821552-17105176677c?w=1400')center/cover; color:white; text-align:center; padding:100px 20px 60px}
-    .hero h2 {font-size:42px; margin-bottom:15px; font-weight:700; text-shadow:2px 2px 4px rgba(0,0,0,0.3)}
+    .hero h2 {font-size:42px; margin-bottom:15px; font-weight:700; text-shadow:2px 2px 4px rgba(0,0,0.3)}
     .hero p {font-size:18px; margin-bottom:25px; opacity:0.95}
     .stats {display:flex; justify-content:center; gap:40px; margin-top:30px; flex-wrap:wrap}
     .stat {text-align:center}
@@ -35,8 +35,8 @@
     .filter-btn {padding:10px 20px; border:2px solid var(--border); background:var(--card); border-radius:25px; cursor:pointer; font-weight:500; transition:0.2s; font-size:14px}
     .filter-btn.active, .filter-btn:hover {background:var(--primary); color:white; border-color:var(--primary)}
     .products {display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:24px}
-    .card {background:var(--card); border-radius:16px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:0.3s; cursor:pointer; border:1px solid var(--border)}
-    .card:hover {transform:translateY(-6px); box-shadow:0 12px 24px rgba(0,0,0,0.12)}
+    .card {background:var(--card); border-radius:16px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0.06); transition:0.3s; cursor:pointer; border:1px solid var(--border)}
+    .card:hover {transform:translateY(-6px); box-shadow:0 12px 24px rgba(0,0,0.12)}
     .card-img-wrap {position:relative; width:100%; height:220px; background:#f8fafc; overflow:hidden}
     .card img {width:100%; height:100%; object-fit:contain; padding:15px; transition:0.3s}
     .card:hover img {transform:scale(1.05)}
@@ -123,7 +123,7 @@
     <p>Gadgets, Home Essentials, Beauty, Toys & More - Best Prices in Karachi with Cash on Delivery</p>
     <a href="#products" class="btn">Start Shopping 🛍️</a>
     <div class="stats">
-      <div class="stat"><h3>57</h3><p>Products</p></div>
+      <div class="stat"><h3>30</h3><p>Products</p></div>
       <div class="stat"><h3>1000+</h3><p>Happy Customers</p></div>
       <div class="stat"><h3>24/7</h3><p>Support</p></div>
       <div class="stat"><h3>COD</h3><p>All Pakistan</p></div>
@@ -286,42 +286,78 @@
 let cart = [];
 let currentFilter = 'all';
 
-// SAB 57 PRODUCTS - TUMHARI SCREENSHOTS SE 100% COPY
+// SAB 30 PRODUCTS - TUMHARI SCREENSHOTS SE 100% COPY
 const products = [
-  {id:1, name:'Kids Erasable Tracing Book', price:700, oldPrice:1000, img:'images/tracingbook.jpg', desc:`Kids Erasable Tracing Book\n\nReusable writing practice book for kids\nPen Control Training | Left & Right Brain Development\nRs 700/-`, category:'kids'},
-  {id:2, name:'Silicon Face Ice Roller', price:600, oldPrice:700, img:'images/iceroller.jpg', desc:`Silicon Face Ice Roller (Live Pic)\n\nFor face massage, reduce puffiness\nAvailable in multiple colors\nRs 600/-`, category:'beauty'},
-  {id:3, name:'400ml Nice Water Bottle', price:600, oldPrice:700, img:'images/bottle.jpg', desc:`400ml Nice Water Bottle\n\nGlass Thermal Insulation | Seal Leak-proof\nThe gentle and quiet of the years | Embrace the little beauty in life\nRs 600/-`, category:'home'},
-  {id:4, name:'Mini Pocket Massager', price:1100, oldPrice:1200, img:'images/massager.jpg', desc:`Mini Pocket Massager\n\nRechargeable | One-touch start button\nLightweight body, easy to handle\nRefuse to be cumbersome\nRs 1100/-`, category:'beauty'},
-  {id:5, name:'Laptop Foldable and Adjustable Laptop Table', price:1800, oldPrice:2000, img:'images/laptoptable.jpg', desc:`Laptop Foldable and Adjustable Laptop Table\n\nFoldable legs - Take it anywhere\nSize: 60cm x 40cm x 28cm\nPerfect for bed or sofa\nRs 1800/-`, category:'home'},
-  {id:6, name:'Nikkah Dupatta - Purple', price:1100, oldPrice:1200, img:'images/dupatta2.jpg', desc:`White Nikkah Dupatta\n\nEmbroidery Nikkah Duppatta\nMaking Required 3 Working Days\nPayment Advance\nDupatta Only Price Rs 1100/-\n*Offer Price Valid Till 30th November 2024`, category:'home'},
-  {id:7, name:'Nikkah Dupatta - White', price:1100, oldPrice:1200, img:'images/dupatta.jpg', desc:`White Nikkah Dupatta\n\nEmbroidery Nikkah Duppatta\nMaking Required 3 Working Days\nPayment Advance\nDupatta Only Price Rs 1100/-\n*Offer Price Valid Till 30th November 2024`, category:'home'},
-  {id:8, name:'M90 Enc Ear Buds with USB Output', price:1700, oldPrice:2000, img:'images/earbuds.jpg', desc:`M90 Enc Ear Buds with USB Output\n\nWireless Bluetooth earbuds with box packing\nClear sound quality\nRs 1700/-`, category:'electronics'},
-  {id:9, name:'Nova Foldable Hair Dryer NV-1290', price:1100, oldPrice:1200, img:'images/hairdryer.jpg', desc:`Nova Foldable Hair Dryer NV-1290\n\n1000W Foldable Hair Dryer\nCompact and powerful for travel use\nRs 1100/-`, category:'electronics'},
-  {id:10, name:'2 In 1 Rechargeable Electric Eyebrow Trimmer + Body Facial Hair Removal', price:1100, oldPrice:1200, img:'images/eyebrowtrimmer.jpg', desc:`2 In 1 Rechargeable Electric Eyebrow Trimmer\n\nBody Facial Hair Removal\nRechargeable battery\nRs 1100/-`, category:'beauty'},
-  {id:11, name:'Inflatable Baby Slapped Pad Water Mat', price:1100, oldPrice:1200, img:'images/babymat.jpg', desc:`Inflatable Baby Slapped Pad Water Mat\n\nFun water play mat for babies\nSafe and colorful\nRs 1100/-`, category:'kids'},
-  {id:12, name:'Customize Acrylic Couple Wedding Frame', price:2200, oldPrice:2500, img:'images/coupleframe.jpg', desc:`Customize Acrylic Couple Wedding Frame\n\nPerfect gift for wedding/anniversary\nHigh quality acrylic\nCustom names available\nRs 2200/-`, category:'home'},
-  {id:13, name:'40pieces Aiwa Tool Set', price:1600, oldPrice:1800, img:'images/toolset.jpg', desc:`40pieces Aiwa Tool Set\n\nComplete household tool kit\nAll essential tools included\nRs 1600/-`, category:'home'},
-  {id:14, name:'Led Digital Temperature Water Bottle', price:1100, oldPrice:1200, img:'images/tempbottle.jpg', desc:`Led Digital Temperature Water Bottle\n\nLED display shows temperature\nStainless steel insulated\nRs 1100/-`, category:'home'},
-  {id:15, name:'J. Pocket size perfume 20ML', price:260, oldPrice:300, img:'images/perfume.jpg', desc:`J. Pocket size perfume 20ML\n\nCompact travel size\nLong lasting fragrance\nRs 260/-`, category:'beauty'},
-  {id:16, name:'Karaoke Bluetooth Microphone with Speaker', price:1300, oldPrice:1500, img:'images/karaoke.jpg', desc:`Karaoke Bluetooth Microphone with Speaker\n\nWireless karaoke mic with built-in speaker\nPerfect for parties\nRs 1300/-`, category:'electronics'},
-  {id:17, name:'AirPods Wireless Headset – Black', price:2400, oldPrice:2800, img:'images/airpods.jpg', desc:`AirPods Wireless Headset – Black\n\nBluetooth wireless earbuds\nHigh quality sound\nRs 2400/-`, category:'electronics'},
-  {id:18, name:'Silicon Foldable Electric Kettle 600ML', price:2300, oldPrice:2500, img:'images/kettle.jpg', desc:`Silicon Foldable Electric Kettle\n600 ML\n\nPortable travel kettle, food grade silicon, quick boil\nRs 2300/-`, category:'home'},
-  {id:19, name:'Storage Box With Steel Rods', price:1200, oldPrice:1300, img:'images/storagebox2.jpg', desc:`Storage Box With Steel Rods\n\nFoldable storage box with steel frame\nStrong & durable, transparent window\nRs 1200/= Each\nRandom Colors & Design`, category:'home'},
-  {id:20, name:'24K Golden Ampoule Serum', price:800, oldPrice:1000, img:'images/goldserum.jpg', desc:`24 K golden ampoule serum\nTender Moisture Essence\nGold Nicotinamide Liquid\nRs 800/= ✨✅\nWith Good Box Packing ✨\nLimited Stock`, category:'beauty'},
-  {id:21, name:'BIOAQUA Exfoliating Rice Soap', price:500, oldPrice:600, img:'images/ricesoap.jpg', desc:`BIOAQUA Exfoliating Rice Soap\n去除角质 EXFOLIATING RICE SOAP\n\nRice extract for skin whitening & exfoliating\nGentle cleansing, soft skin\nRs 500/= Each`, category:'beauty'},
-  {id:22, name:'False Nails Tips Short Beauty Coffin Almond French Artificial Nails Box', price:1050, oldPrice:1200, img:'images/falsenails.jpg', desc:`False Nails Tips Short Beauty Coffin Almond French Artificial Nails Box\n\n24 colors | 24PCS\nMultiple styles: Coffin, Almond, French\nRs 1050/= Kit`, category:'beauty'},
-  {id:23, name:'Smart Soap Holder Leaf Shape', price:400, oldPrice:600, img:'images/soapholder.jpg', desc:`Very stylish Smart soap holder high quality leaf shape for bathroom self adhesive soap dispenser\n\nSlip Resistant Surface | Water Can Flow Direct\nRs. 400/-`, category:'home'},
-  {id:24, name:'Nima 4 Blades Handy Electric Masala/Coffee Grinder', price:2000, oldPrice:2200, img:'images/nimagrinder.jpg', desc:`Nima Japan Electric Grinder\n18 Months Warranty\n\nStainless Steel Bowl to mill coffee, cardamom, nuts, spices.\nMetal Blade\nRs. 2000/-\nWith Good Box Packing`, category:'home'},
-  {id:25, name:'Calendar Keychain Customized', price:800, oldPrice:1000, img:'images/calendarkeychain.jpg', desc:`We Are Introducing the Calendar Keychain\n\n■ Steel Life Time Polish\n■ Any Name or Word Can Be Customized\n■ Making Required 2 Working Days\n■ Price PKR: = 800/= only`, category:'home'},
-  {id:26, name:'Swiss First Aid Medicine Box', price:950, oldPrice:1150, img:'images/medicinebox.jpg', desc:`SWISS MEDICINE BOX\nOmega Collection\n30 PCS CARTON\n\nRs 950/-\nRandom Colors Available`, category:'home'},
-  {id:27, name:'21 STRAPS Changeable Straps Watch Set', price:2700, oldPrice:3000, img:'images/watchstraps.jpg', desc:`21 STRAPS CHANGEABLE STRAPS\n\n21 STRAPS\nCHANGEABLE STRAPS\nATTRACTIVE COLORS\nBEST FOR GIFT\nRs. 2700/- Set\nWith Good Box Packing\nNEW ARRIVAL`, category:'electronics'},
-  {id:28, name:'1.4L Kitchen Stainless Steel Oil Filter Pot', price:1600, oldPrice:1800, img:'images/oilfilter.jpg', desc:`STAINLESS STEEL OIL FILTER\n1.4L Kitchen Stainless Steel Kitchen Oil Filter Pot (Box Packing)\nRs 1600/-\nDiscount On Quantity`, category:'home'},
-  {id:29, name:'Handheld Sewing Machine, Portable Handy Stitch Machine', price:1400, oldPrice:1600, img:'images/sewingmachine.jpg', desc:`PORTABLE SEWING MACHINE\nHandle sewing machine allows you to use it any time\nRs 1400/-\nDiscount On Quantity`, category:'home'},
-  {id:30, name:'3 in 1 Hot & Cool Vacuum Flask Set', price:1800, oldPrice:2000, img:'images/vacuumflask.jpg', desc:`PORTABLE STAINLESS STEEL INSULATED CUP\nSealed and leak proof | 304 stainless steel | Long term heat preservation\nRs 1800/-\nDiscount On Quantity`, category:'home'},
-  {id:31, name:'11Pcs Power Exercise Resistance Band Set', price:1500, oldPrice:1700, img:'images/resistanceband.jpg', desc:`11PCS Power Exercise Resistance Band Set\nYellow - 10lbs | Green - 15lbs | Red - 20lbs | Blue - 25lbs | Black - 30lbs\nRs 1500/-\nOutdoor, Gym, Home use\nDiscount On Quantity`, category:'beauty'},
-  {id:32, name:'5 Toothbrush Holder Storage Box', price:800, oldPrice:1000, img:'images/toothbrushholder.jpg', desc:`Paste multi-function toothpaste toothbrush holder\nSelective Color: White, Yellow, Blue, Pink\nBathroom Wall Mount\nRs 800/= Each ✅\nRandom Colors ✨✨`, category:'home'},
-  {id:33, name:'Double Ended Spray Water Fan', price:4200, oldPrice:4500, img:'images/sprayfan.jpg', desc:`Double Ended Spray Water Mist Fan\n\nSpiral fan blade High pressure wind blowing far\nStrong motor with large Angle screw blade, directional guide hood to make the air supply distance longer, more concentrated, accelerate air circulation\n\nDiscount On Quantity`, category:'home'},
-  {id:34, name:'Rabbit Handle Clear Desk Organizer', price:1100, oldPrice:1200, img:'images/organizer.jpg', desc:`Perfect for Pens, Makeup, Jewelry & More | Light weight PE Material | Ideal for Office & Home Storage\nRs 1100/= Each ✅\nRandom Colours ✨✨`, category:'home'},
-  {id:35, name:'Manual Soap & Shampoo Dispenser Wall Mounted 350ML', price:1800, oldPrice:1900, img:'images/soapdispenser.jpg', desc:`NEW ARRIVAL 🇨🇳\nHigh Quality\nManual Soap & Shampoo Dispenser Wall Mounted 350ML\n(Random Colors)\nRs 1800/- Each ✨✅\nWith Box`, category:'home'},
-  {id:36, name:'Dell Chromebook', price:12000, oldPrice:15000, img:'images/chromebook.jpg', desc:`✅ Make: Dell\n✅ Model: Chromebook\n✅ Operating Sys: Chrome OS\n✅ Processor: Intel Celeron\n✅ Update: 2027\n✅ Display: 11.6 Inches\n✅ Ram: 4 GB\n✅ Storage: 16 GB\n✅ Bluetooth: Yes\n✅ Wifi: Yes\n✅ Ports: USB 3.0\n✅ Camera: Yes\n✅ Best for online classes, Office use & Online working\n✅ 07 Days Checking warranty !\n
+  {id:26, name:'Cute Dancing and Recording Talking Cactus Toys', price:1400, oldPrice:1600, img:'images/cactus.jpg', desc:`Cute Dancing and Recording Talking Cactus Toys\n\nRs 1400/= Each ✨✅\nWith Good Box Packing\nDancing + Recording + Talking + Lights\nBest gift for kids`, category:'kids'},
+  {id:27, name:'Kids Foldable Plastic Table & Chair Different Colors', price:3500, oldPrice:4000, img:'images/kidstable.jpg', desc:`Kids Foldable Plastic Table & Chair Different Colors\n\nTable Rs 1800/= Each ✨✅\nChair Rs 1700/= Each\n\nFull Set = Rs 3500/-\nFoldable & portable, different colors available\nPerfect for study & play`, category:'kids'},
+  {id:28, name:'Professional Portable Mini Electric Steam Iron', price:2100, oldPrice:2300, img:'images/steamiron.jpg', desc:`Professional Portable Mini Electric Steam Iron\nHandheld Garment Steamer For Clothes Mini Ironing Machine\n\nDry and Wet Combo\nRs 2100/= Each ✨✅\nWith Good Box Packing\nTravel friendly`, category:'home'},
+  {id:29, name:'7 Day Hair Growth Serum, 30ML Chinese Herbal Formula', price:700, oldPrice:800, img:'images/hairserum.jpg', desc:`7 Day Hair Growth Serum, 30ML Chinese Herbal Formula\nHair Care Hair Nutrition Liquid Hair Growth\n\nGinger Germin - Natural ingredients\nRs 700/= Each\nReduces hair fall, promotes growth`, category:'beauty'},
+  {id:30, name:'Good Quality 30ML Ostrich Oil Result 100%', price:1200, oldPrice:1300, img:'images/ostrichoil.jpg', desc:`ENHANCED OSTRICH OIL - OSTRUCE\n\nجوڑوں اور پٹھوں کے درد کو کم کرنے میں موثر\nFor joints and muscle pain\n\nRs 1200/= Each\n100ML bottle\n100% Result guaranteed`, category:'beauty'},
+  {id:1, name:'Silicon Foldable Electric Kettle 600ML', price:2300, oldPrice:2500, img:'images/kettle.jpg', desc:`Silicon Foldable Electric Kettle\n600 ML\n\nPortable travel kettle, food grade silicon, quick boil\nRs 2300/- ✅`, category:'home'},
+  {id:2, name:'Storage Box With Steel Rods', price:1200, oldPrice:1300, img:'images/storagebox2.jpg', desc:`Storage Box With Steel Rods\n\nFoldable storage box with steel frame\nStrong & durable, transparent window\n\nRs 1200/= Each ✅\nRandom Colors & Design`, category:'home'},
+  {id:3, name:'24K Golden Ampoule Serum', price:800, oldPrice:1000, img:'images/goldserum.jpg', desc:`24 K golden ampoule serum\nTender Moisture Essence\nGold Nicotinamide Liquid\n\nRs 800/= ✨✅\nWith Good Box Packing ✨\nLimited Stock`, category:'beauty'},
+  {id:4, name:'BIOAQUA Exfoliating Rice Soap', price:500, oldPrice:600, img:'images/ricesoap.jpg', desc:`BIOAQUA Exfoliating Rice Soap\n去除角质 EXFOLIATING RICE SOAP\n\nRice extract for skin whitening & exfoliating\nGentle cleansing, soft skin\n\nRs 500/= Each`, category:'beauty'},
+  {id:5, name:'False Nails Tips Short Beauty Coffin Almond French Artificial Nails Box', price:1050, oldPrice:1200, img:'images/falsenails.jpg', desc:`False Nails Tips Short Beauty Coffin Almond French Artificial Nails Box\n\n24 colors | 24PCS\nMultiple styles: Coffin, Almond, French\n\nRs 1050/= Kit`, category:'beauty'},
+  {id:6, name:'Smart Soap Holder Leaf Shape', price:400, oldPrice:600, img:'images/soapholder.jpg', desc:`Very stylish Smart soap holder high quality leaf shape for bathroom self adhesive soap dispenser\n\nSlip Resistant Surface | Water Can Flow Direct\nRs. 400/- ✅`, category:'home'},
+  {id:7, name:'Nima 4 Blades Handy Electric Masala/Coffee Grinder', price:2000, oldPrice:2200, img:'images/nimagrinder.jpg', desc:`Nima Japan Electric Grinder\n18 Months Warranty\n\nStainless Steel Bowl to mill coffee, cardamom, nuts, spices.\nMetal Blade\n\nRs. 2000/- ✅\nWith Good Box Packing`, category:'home'},
+  {id:8, name:'Calendar Keychain Customized', price:800, oldPrice:1000, img:'images/calendarkeychain.jpg', desc:`We Are Introducing the Calendar Keychain\n\n■ Steel Life Time Polish\n■ Any Name or Word Can Be Customized\n■ Making Required 2 Working Days\n■ Price PKR: = 800/= only`, category:'home'},
+  {id:9, name:'Swiss First Aid Medicine Box', price:950, oldPrice:1150, img:'images/medicinebox.jpg', desc:`SWISS MEDICINE BOX\nOmega Collection\n30 PCS CARTON\n\nRs 950/- ✅\nRandom Colors Available`, category:'home'},
+  {id:10, name:'21 STRAPS Changeable Straps Watch Set', price:2700, oldPrice:3000, img:'images/watchstraps.jpg', desc:`21 STRAPS CHANGEABLE STRAPS\n\n21 STRAPS\nCHANGEABLE STRAPS\nATTRACTIVE COLORS\nBEST FOR GIFT\n\nRs. 2700/- Set ✨✅\nWith Good Box Packing\nNEW ARRIVAL`, category:'electronics'},
+  {id:11, name:'1.4L Kitchen Stainless Steel Oil Filter Pot', price:1600, oldPrice:1800, img:'images/oilfilter.jpg', desc:`STAINLESS STEEL OIL FILTER\n1.4L Kitchen Stainless Steel Kitchen Oil Filter Pot (Box Packing)\nRs 1600/-\nDiscount On Quantity`, category:'home'},
+  {id:12, name:'Handheld Sewing Machine, Portable Handy Stitch Machine', price:1400, oldPrice:1600, img:'images/sewingmachine.jpg', desc:`PORTABLE SEWING MACHINE\nHandle sewing machine allows you to use it any time\nRs 1400/-\nDiscount On Quantity`, category:'home'},
+  {id:13, name:'3 in 1 Hot & Cool Vacuum Flask Set', price:1800, oldPrice:2000, img:'images/vacuumflask.jpg', desc:`PORTABLE STAINLESS STEEL INSULATED CUP\nSealed and leak proof | 304 stainless steel | Long term heat preservation\nRs 1800/-\nDiscount On Quantity`, category:'home'},
+  {id:14, name:'11Pcs Power Exercise Resistance Band Set', price:1500, oldPrice:1700, img:'images/resistanceband.jpg', desc:`11PCS Power Exercise Resistance Band Set\nYellow - 10lbs | Green - 15lbs | Red - 20lbs | Blue - 25lbs | Black - 30lbs\nRs 1500/-\nOutdoor, Gym, Home use\nDiscount On Quantity`, category:'beauty'},
+  {id:15, name:'5 Toothbrush Holder Storage Box', price:800, oldPrice:1000, img:'images/toothbrushholder.jpg', desc:`Paste multi-function toothpaste toothbrush holder\nSelective Color: White, Yellow, Blue, Pink\nBathroom Wall Mount\nRs 800/= Each ✅\nRandom Colors ✨✨`, category:'home'},
+  {id:16, name:'Double Ended Spray Water Fan', price:4200, oldPrice:4500, img:'images/sprayfan.jpg', desc:`Double Ended Spray Water Mist Fan\n\nSpiral fan blade High pressure wind blowing far\nStrong motor with large Angle screw blade, directional guide hood to make the air supply distance longer, more concentrated, accelerate air circulation\n\nDiscount On Quantity`, category:'home'},
+  {id:17, name:'Rabbit Handle Clear Desk Organizer', price:1100, oldPrice:1200, img:'images/organizer.jpg', desc:`Perfect for Pens, Makeup, Jewelry & More | Light weight PE Material | Ideal for Office & Home Storage\nRs 1100/= Each ✅\nRandom Colours ✨✨`, category:'home'},
+  {id:18, name:'Manual Soap & Shampoo Dispenser Wall Mounted 350ML', price:1800, oldPrice:1900, img:'images/soapdispenser.jpg', desc:`NEW ARRIVAL 🇨🇳\nHigh Quality\nManual Soap & Shampoo Dispenser Wall Mounted 350ML\n(Random Colors)\nRs 1800/- Each ✨✅\nWith Box`, category:'home'},
+  {id:19, name:'Dell Chromebook', price:12000, oldPrice:15000, img:'images/chromebook.jpg', desc:`✅ Make: Dell\n✅ Model: Chromebook\n✅ Operating Sys: Chrome OS\n✅ Processor: Intel Celeron\n✅ Update: 2027\n✅ Display: 11.6 Inches\n✅ Ram: 4 GB\n✅ Storage: 16 GB\n✅ Bluetooth: Yes\n✅ Wifi: Yes\n✅ Ports: USB 3.0\n✅ Camera: Yes\n✅ Best for online classes, Office use & Online working\n✅ 07 Days Checking warranty !\n✅ Cash On Delivery All Over Pakistan Available !\nOnly 12,000/=\nDelivery Charges = 1,000/=\nTotal = 13,000/=\n🥰 Allowed to open parcel 🥰\n😻 DC advance 😻`, category:'electronics'},
+  {id:20, name:'2 in 1 Multifunctional Samosa & Dumpling Maker', price:600, oldPrice:700, img:'images/dumplingmaker.jpg', desc:`2 in 1 Multifunctional Samosa & Dumpling Maker\nDiscount On Quantity`, category:'home'},
+  {id:21, name:'Nova Foldable Hair Dryer NV-1290', price:1100, oldPrice:1200, img:'images/hairdryer.jpg', desc:`Foldable Hair Dryer 1000W - Compact and powerful for travel use`, category:'electronics'},
+  {id:22, name:'M90 Enc Ear Buds with USB Output', price:1700, oldPrice:2000, img:'images/earbuds.jpg', desc:'M90 Enc Ear Buds with Box Packing - Clear sound quality', category:'electronics'},
+  {id:23, name:'Nikkah Dupatta', price:1100, oldPrice:1200, img:'images/dupatta.jpg', desc:'White Nikkah Dupatta - Elegant design for special occasions', category:'home'},
+  {id:24, name:'Laptop Foldable Table', price:1800, oldPrice:2000, img:'images/laptoptable.jpg', desc:'Foldable and Adjustable Laptop Table - Perfect for bed or sofa', category:'home'},
+  {id:25, name:'Mini Pocket Massager', price:1100, oldPrice:1200, img:'images/massager.jpg', desc:'Mini Pocket Massager - Portable relief device', category:'beauty'}
+];
+
+// YAHAN SE JAVASCRIPT START HOTA HAI - SAB FUNCTIONS
+
+function displayProducts(filter = 'all') {
+  const container = document.getElementById('productsContainer');
+  const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
   
+  container.innerHTML = filteredProducts.map(product => `
+    <div class="card" onclick="openProduct(${product.id})">
+      <div class="card-img-wrap">
+        <img src="${product.img}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/270x220?text=No+Image'">
+      </div>
+      <div class="card-content">
+        <div class="card-category">${product.category}</div>
+        <h3>${product.name}</h3>
+        <div class="card-price-wrap">
+          <span class="price">Rs. ${product.price}</span>
+          ${product.oldPrice ? `<span class="old-price">Rs. ${product.oldPrice}</span>` : ''}
+          ${product.oldPrice ? `<span class="discount">${Math.round((1 - product.price/product.oldPrice)*100)}% OFF</span>` : ''}
+        </div>
+        <button class="add-btn" onclick="event.stopPropagation(); addToCart(${product.id})">Add to Cart</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterProducts(category) {
+  currentFilter = category;
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  displayProducts(category);
+}
+
+function openProduct(id) {
+  const product = products.find(p => p.id === id);
+  const modal = document.getElementById('productModal');
+  const content = document.getElementById('productDetailContent');
+  
+  content.innerHTML = `
+    <div class="product-detail">
+      <div class="product-gallery">
+        <img src="${product.img}" alt="${product.name}" onerror="this.src='https://
