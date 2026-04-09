@@ -3,120 +3,193 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zenvy Tech Store</title>
+<title>Zenvy Tech Pro</title>
 
 <style>
-body{font-family:sans-serif;margin:0;background:#f1f5f9}
-header{background:#2563eb;color:white;padding:15px;text-align:center}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;padding:20px}
-.card{background:white;padding:10px;border-radius:10px;cursor:pointer}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
+body{background:#f1f5f9}
+
+/* HEADER */
+header{
+background:#2563eb;color:#fff;
+display:flex;justify-content:space-between;
+padding:15px 20px;position:fixed;width:100%;top:0;z-index:100
+}
+.logo{font-size:22px;font-weight:bold}
+nav input{
+padding:8px;border-radius:6px;border:none;width:200px
+}
+
+/* HERO */
+.hero{
+margin-top:70px;
+padding:60px;text-align:center;
+background:#1e40af;color:#fff
+}
+
+/* FILTER */
+.filters{
+display:flex;gap:10px;justify-content:center;margin:20px
+}
+.filters button{
+padding:8px 15px;border:none;border-radius:20px;cursor:pointer
+}
+
+/* PRODUCTS */
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:15px;padding:20px
+}
+.card{
+background:#fff;padding:12px;border-radius:10px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1)
+}
 .card img{width:100%;height:150px;object-fit:contain}
+.card h4{margin:10px 0}
 .price{color:green;font-weight:bold}
-.cart{position:fixed;bottom:20px;right:20px;background:green;color:white;padding:10px;border-radius:50px;cursor:pointer}
-button{padding:8px;border:none;background:#2563eb;color:white;border-radius:6px;cursor:pointer}
-.filters{text-align:center;margin:10px}
+.old{color:#888;text-decoration:line-through;font-size:12px}
+
+.btn{
+background:#f59e0b;border:none;padding:8px;width:100%;
+border-radius:6px;cursor:pointer;margin-top:5px
+}
+
+/* CART */
+.cart{
+position:fixed;bottom:20px;right:20px;
+background:green;color:#fff;padding:12px 18px;
+border-radius:50px;cursor:pointer
+}
+
+/* MODAL */
+.modal{
+display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.6)
+}
+.modal-content{
+background:#fff;margin:10% auto;padding:20px;width:90%;max-width:400px;border-radius:10px
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h2>Zenvy Tech Store</h2>
+<div class="logo">Zenvy Tech</div>
+<nav>
+<input type="text" id="search" placeholder="Search product..." onkeyup="searchProduct()">
+</nav>
 </header>
 
-<div class="filters">
-<button onclick="filterProducts('all')">All</button>
-<button onclick="filterProducts('electronics')">Electronics</button>
-<button onclick="filterProducts('home')">Home</button>
-<button onclick="filterProducts('beauty')">Beauty</button>
-<button onclick="filterProducts('kids')">Kids</button>
+<div class="hero">
+<h2>🔥 Best Online Store Pakistan</h2>
+<p>COD Available | Fast Delivery</p>
 </div>
 
-<div class="products" id="productsContainer"></div>
+<div class="filters">
+<button onclick="filter('all')">All</button>
+<button onclick="filter('electronics')">Electronics</button>
+<button onclick="filter('home')">Home</button>
+<button onclick="filter('beauty')">Beauty</button>
+</div>
 
-<div class="cart" onclick="checkout()">Cart (<span id="cartCount">0</span>)</div>
+<div class="products" id="products"></div>
+
+<div class="cart" onclick="openCart()">🛒 <span id="count">0</span></div>
+
+<!-- MODAL -->
+<div class="modal" id="cartModal">
+<div class="modal-content">
+<h3>Your Cart</h3>
+<div id="cartItems"></div>
+<h4 id="total"></h4>
+<button class="btn" onclick="order()">Order on WhatsApp</button>
+</div>
+</div>
 
 <script>
 
 let cart=[]
+let current="all"
 
 const products=[
-{id:1,name:'Tracing Book',price:700,category:'kids'},
-{id:2,name:'Ice Roller',price:600,category:'beauty'},
-{id:3,name:'Water Bottle',price:600,category:'home'},
-{id:4,name:'Massager',price:1100,category:'beauty'},
-{id:5,name:'Laptop Table',price:1800,category:'home'},
-{id:6,name:'Earbuds',price:1700,category:'electronics'},
-{id:7,name:'Hair Dryer',price:1100,category:'electronics'},
-{id:8,name:'Baby Water Mat',price:1100,category:'kids'},
-{id:9,name:'Tool Set',price:1600,category:'home'},
-{id:10,name:'Perfume',price:260,category:'beauty'},
-{id:11,name:'Karaoke Mic',price:1300,category:'electronics'},
-{id:12,name:'Airpods',price:2400,category:'electronics'},
-{id:13,name:'Kettle',price:2300,category:'home'},
-{id:14,name:'Storage Box',price:1200,category:'home'},
-{id:15,name:'Gold Serum',price:800,category:'beauty'},
-{id:16,name:'Rice Soap',price:500,category:'beauty'},
-{id:17,name:'Nails Kit',price:1050,category:'beauty'},
-{id:18,name:'Soap Holder',price:400,category:'home'},
-{id:19,name:'Grinder',price:2000,category:'home'},
-{id:20,name:'Keychain',price:800,category:'home'},
-{id:21,name:'Medicine Box',price:950,category:'home'},
-{id:22,name:'Watch Set',price:2700,category:'electronics'},
-{id:23,name:'Oil Filter',price:1600,category:'home'},
-{id:24,name:'Sewing Machine',price:1400,category:'home'},
-{id:25,name:'Vacuum Flask',price:1800,category:'home'},
-{id:26,name:'Resistance Bands',price:1500,category:'beauty'},
-{id:27,name:'Toothbrush Holder',price:800,category:'home'},
-{id:28,name:'Spray Fan',price:4200,category:'home'},
-{id:29,name:'Desk Organizer',price:1100,category:'home'},
-{id:30,name:'Soap Dispenser',price:1800,category:'home'},
-{id:31,name:'Chromebook',price:12000,category:'electronics'},
-{id:32,name:'Dumpling Maker',price:600,category:'home'}
+{id:1,name:"AirPods",price:2400,old:2800,cat:"electronics",img:"https://via.placeholder.com/150"},
+{id:2,name:"Hair Dryer",price:1100,old:1300,cat:"electronics",img:"https://via.placeholder.com/150"},
+{id:3,name:"Water Bottle",price:600,old:800,cat:"home",img:"https://via.placeholder.com/150"},
+{id:4,name:"Face Roller",price:500,old:700,cat:"beauty",img:"https://via.placeholder.com/150"},
+{id:5,name:"Massager",price:1200,old:1500,cat:"beauty",img:"https://via.placeholder.com/150"},
+{id:6,name:"Laptop Table",price:1800,old:2200,cat:"home",img:"https://via.placeholder.com/150"}
 ]
 
-function renderProducts(list){
-let html=''
-list.forEach(p=>{
-html+=`
+// LOAD PRODUCTS
+function load(){
+let box=document.getElementById("products")
+box.innerHTML=""
+
+products
+.filter(p=>current=="all"||p.cat==current)
+.forEach(p=>{
+box.innerHTML+=`
 <div class="card">
-<img src="https://via.placeholder.com/150">
+<img src="${p.img}">
 <h4>${p.name}</h4>
-<p class="price">Rs ${p.price}</p>
-<button onclick="addToCart(${p.id})">Add</button>
+<div class="price">Rs ${p.price}</div>
+<div class="old">Rs ${p.old}</div>
+<button class="btn" onclick="add(${p.id})">Add to Cart</button>
 </div>`
 })
-document.getElementById('productsContainer').innerHTML=html
 }
 
-function filterProducts(cat){
-if(cat=='all') renderProducts(products)
-else renderProducts(products.filter(p=>p.category==cat))
+// FILTER
+function filter(cat){
+current=cat
+load()
 }
 
-function addToCart(id){
+// SEARCH
+function searchProduct(){
+let val=document.getElementById("search").value.toLowerCase()
+let cards=document.querySelectorAll(".card")
+
+cards.forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(val)?"block":"none"
+})
+}
+
+// ADD CART
+function add(id){
 let item=products.find(p=>p.id==id)
 cart.push(item)
-document.getElementById('cartCount').innerText=cart.length
+document.getElementById("count").innerText=cart.length
 }
 
-function checkout(){
-if(cart.length==0){alert('Cart empty');return}
-
-let msg='Zenvy Order:%0A'
+// OPEN CART
+function openCart(){
+let modal=document.getElementById("cartModal")
+let items=document.getElementById("cartItems")
 let total=0
+items.innerHTML=""
 
-cart.forEach((p,i)=>{
-msg+=`${i+1}. ${p.name} Rs${p.price}%0A`
-total+=p.price
+cart.forEach(i=>{
+total+=i.price
+items.innerHTML+=`<p>${i.name} - Rs ${i.price}</p>`
 })
 
-msg+=`Total: Rs${total}`
-
-window.open(`https://wa.me/923012800023?text=${msg}`)
+document.getElementById("total").innerText="Total: Rs "+total
+modal.style.display="block"
 }
 
-renderProducts(products)
+// ORDER
+function order(){
+let msg="Order:%0A"
+cart.forEach(i=>{
+msg+=i.name+" - Rs "+i.price+"%0A"
+})
+window.open("https://wa.me/923012800023?text="+msg)
+}
+
+load()
 
 </script>
 
