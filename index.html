@@ -1,171 +1,324 @@
-<!-- Complete Order Modal Start -->
-<div class="modal fade" id="orderModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenvy Tech - Online Store | Best Deals in Pakistan</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif}
+    body {background:#f8fafc; color:#1e293b; padding-top:80px}
+    header {background:#1e3a8a; color:white; padding:15px 5%; display:flex; justify-content:space-between; align-items:center; position:fixed; top:0; left:0; right:0; z-index:100}
+    header h1 {font-size:24px}
+    nav a {color:white; text-decoration:none; margin-left:20px; font-weight:500}
+
+   .hero {background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=1200')center/cover; color:white; text-align:center; padding:100px 20px}
+   .hero h2 {font-size:40px; margin-bottom:10px; text-shadow:2px 2px 4px rgba(0,0,0,0.5)}
+   .hero p {font-size:18px; text-shadow:1px 1px 2px rgba(0,0,0,0.5)}
+   .btn {background:#f59e0b; color:black; padding:12px 25px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; text-decoration:none; display:inline-block; margin-top:20px}
+
+   .section {padding:50px 5%}
+   .section h2 {font-size:30px; margin-bottom:30px; color:#1e3a8a; text-align:center}
+   .products {display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px}
+   .card {background:white; border-radius:12px; padding:15px; box-shadow:0 4px 12px rgba(0,0,0,0.08); text-align:center; transition:0.3s}
+   .card:hover {transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.15)}
+   .card img {width:100%; height:160px; object-fit:cover; border-radius:8px}
+   .card h3 {margin:12px 0 5px; color:#1e3a8a; font-size:18px}
+   .card p {color:#64748b; font-size:14px; margin:8px 0}
+   .price {color:#059669; font-weight:bold; font-size:18px; margin:8px 0}
+   .add-btn {margin-top:10px; padding:10px; width:100%; border:none; background:#1e3a8a; color:white; cursor:pointer; border-radius:8px; font-weight:600}
+   .add-btn:hover {background:#1e40af}
+   .view-btn {margin-top:8px; padding:10px; width:100%; border:2px solid #1e3a8a; background:white; color:#1e3a8a; cursor:pointer; border-radius:8px; font-weight:600}
+   .view-btn:hover {background:#f1f5f9}
+   .cart {position:fixed; bottom:25px; right:25px; background:#22c55e; color:white; padding:15px 20px; border-radius:50px; cursor:pointer; font-weight:bold; box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:100}
+   .cart span {background:red; color:white; padding:2px 8px; border-radius:50%; margin-left:5px; font-size:14px}
+
+   .modal {display:none; position:fixed; z-index:200; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.7); overflow:auto}
+   .modal-content {background:#f8fafc; margin:3% auto; padding:25px; border-radius:12px; width:95%; max-width:1200px; animation:slideDown 0.3s; max-height:90vh; overflow-y:auto}
+    @keyframes slideDown {from{transform:translateY(-50px); opacity:0} to{transform:translateY(0); opacity:1}}
+   .modal-header {display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding-bottom:15px; border-bottom:2px solid #e2e8f0}
+   .modal-header h3 {color:#1e3a8a; font-size:24px}
+   .close-modal {background:#ef4444; color:white; border:none; padding:8px 16px; border-radius:8px; cursor:pointer; font-weight:bold}
+   .close-modal:hover {background:#dc2626}
+
+   .form-group {margin-bottom:15px}
+   .form-group label {display:block; margin-bottom:5px; font-weight:600; color:#1e293b}
+   .form-group input,.form-group textarea {width:100%; padding:10px; border:2px solid #e2e8f0; border-radius:8px; font-size:15px}
+   .form-group input:focus,.form-group textarea:focus {outline:none; border-color:#1e3a8a}
+   .modal-btn {padding:12px; width:100%; border:none; border-radius:8px; font-weight:bold; cursor:pointer; margin-top:10px}
+   .submit-btn {background:#22c55e; color:white}
+   .submit-btn:hover {background:#16a34a}
+   .order-summary {background:white; padding:15px; border-radius:8px; margin-bottom:20px}
+   .order-summary h4 {margin-bottom:10px; color:#1e3a8a}
+   .order-item {display:flex; justify-content:space-between; margin:5px 0; font-size:14px}
+   .order-total {border-top:2px solid #cbd5e1; padding-top:10px; margin-top:10px; font-weight:bold; display:flex; justify-content:space-between}
+
+    footer {background:#1e3a8a; color:white; text-align:center; padding:30px 5%; margin-top:40px}
+    footer a {color:#f59e0b; text-decoration:none}
+    @media(max-width:600px){.hero h2{font-size:26px} nav{display:none}.modal-content{margin:5% auto; width:98%}}
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Zenvy Tech</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h2>Zenvy Tech Online Store</h2>
+    <p>Bags, Toys, Gadgets, Home Essentials — Used & New Products at Unbeatable Prices</p>
+    <a href="#products" class="btn">Shop Now</a>
+  </section>
+
+  <section class="section" id="products">
+    <h2>Our Categories</h2>
+    <div class="products">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400" alt="Bags">
+        <h3>Bags Collection</h3>
+        <p>School, Travel, Laptop Bags - 15+ Varieties</p>
+        <button class="view-btn" onclick="openCategory('bags')">View All Bags</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=400" alt="Toys">
+        <h3>Toys & Games</h3>
+        <p>Cars, Dolls, Educational Toys - 20+ Items</p>
+        <button class="view-btn" onclick="openCategory('toys')">View All Toys</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=400" alt="Gadgets">
+        <h3>Electronics & Gadgets</h3>
+        <p>Earbuds, Watches, Phones - 10+ Items</p>
+        <button class="view-btn" onclick="openCategory('gadgets')">View All Gadgets</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400" alt="Home">
+        <h3>Home Essentials</h3>
+        <p>Crockery, Decor, Kitchen Items - 25+ Items</p>
+        <button class="view-btn" onclick="openCategory('home')">View All Items</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- YE WALE SECTION WAPAS AA GAYE HAIN 👇 -->
+  <section class="section" id="about" style="background:white">
+    <h2>Why Choose Zenvy Tech?</h2>
+    <p style="max-width:700px; margin:auto; line-height:1.8; text-align:center">We are Karachi's most trusted online store for quality products at affordable prices. Every item is thoroughly checked before delivery. Used products are in excellent condition. Get up to 50% off market rates. Simply add to cart and checkout via WhatsApp for fast home delivery.</p>
+  </section>
+
+  <section class="section" id="contact" style="text-align:center">
+    <h2>Contact Us</h2>
+    <p>For orders or inquiries:</p>
+    <br>
+    <p style="font-size:18px; font-weight:bold">WhatsApp: 03012800023</p>
+    <p style="margin-top:10px">Location: Karachi, Pakistan</p>
+  </section>
+
+  <footer>
+    <p>© 2026 Zenvy Tech. All Rights Reserved.</p>
+    <p><a href="#home">Back to Top</a></p>
+  </footer>
+  <!-- YAHAN TAK WAPAS AA GAYE HAIN 👆 -->
+
+  <div class="cart" onclick="openCheckout()">🛒 Cart <span id="cartCount">0</span></div>
+
+  <!-- CATEGORY MODAL -->
+  <div id="categoryModal" class="modal">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">Complete Your Order</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      <div class="modal-header">
+        <h3 id="categoryTitle">Products</h3>
+        <button class="close-modal" onclick="closeCategory()">✕ Close</button>
       </div>
-      <div class="modal-body">
-        
-        <div class="mb-3">
-          <h6>Order Summary</h6>
-          <div id="cartItemsList">
-            <!-- Yahan cart ke products khud aa jayenge -->
-          </div>
-          <hr>
-          <div class="d-flex justify-content-between fw-bold fs-5">
-            <span>Total:</span>
-            <span id="totalPrice">Rs. 0</span>
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="fullName" class="form-label">Full Name *</label>
-          <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="phoneNumber" class="form-label">Phone Number *</label>
-          <input type="tel" class="form-control" id="phoneNumber" placeholder="03XXXXXXXXX" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="city" class="form-label">City *</label>
-          <input type="text" class="form-control" id="city" placeholder="e.g. Karachi, Lahore" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="deliveryAddress" class="form-label">Complete Delivery Address *</label>
-          <textarea class="form-control" id="deliveryAddress" rows="2" placeholder="House #, Street, Area" required></textarea>
-        </div>
-
-        <div class="mb-3">
-          <label for="postalCode" class="form-label">Postal Code *</label>
-          <input type="text" class="form-control" id="postalCode" placeholder="e.g. 74000" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="paymentMethod" class="form-label">Payment Method *</label>
-          <select class="form-select" id="paymentMethod" required>
-            <option value="" selected disabled>Select payment method</option>
-            <option value="Cash on Delivery">Cash on Delivery - COD</option>
-            <option value="Easypaisa">Easypaisa</option>
-            <option value="JazzCash">JazzCash</option>
-            <option value="Bank Transfer">Bank Transfer</option>
-          </select>
-        </div>
-
-        <div class="mb-3" id="paymentDetails" style="display: none;">
-          <div class="alert alert-info p-2">
-            <small><strong>Payment Details:</strong><br>
-            <span id="paymentText"></span></small>
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="additionalNotes" class="form-label">Additional Notes (Optional)</label>
-          <textarea class="form-control" id="additionalNotes" rows="2" placeholder="Any special instructions..."></textarea>
-        </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success w-100 py-2" onclick="placeOrder()">
-          <i class="bi bi-whatsapp"></i> Place Order on WhatsApp
-        </button>
-      </div>
+      <div class="products" id="categoryProducts"></div>
     </div>
   </div>
-</div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkoutModal" class="modal">
+    <div class="modal-content" style="max-width:500px; background:white;">
+      <div class="modal-header">
+        <h3>Complete Your Order</h3>
+        <button class="close-modal" onclick="closeCheckout()">✕</button>
+      </div>
+
+      <div class="order-summary" id="orderSummary">
+        <h4>Order Summary</h4>
+        <div id="orderItems"></div>
+        <div class="order-total">
+          <span>Total:</span>
+          <span id="orderTotal">Rs. 0</span>
+        </div>
+      </div>
+
+      <form id="orderForm" onsubmit="submitOrder(event)">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="customerName" required placeholder="Enter your full name">
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" id="customerPhone" required placeholder="03XXXXXXXXX">
+        </div>
+
+        <div class="form-group">
+          <label>Complete Delivery Address *</label>
+          <textarea id="customerAddress" required rows="3" placeholder="House #, Street, Area, City"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Additional Notes (Optional)</label>
+          <textarea id="customerNotes" rows="2" placeholder="Any special instructions..."></textarea>
+        </div>
+
+        <button type="submit" class="modal-btn submit-btn">Place Order on WhatsApp</button>
+      </form>
+    </div>
+  </div>
 
 <script>
-// Ye function cart ke items ko modal me show karega
-function updateOrderModal() {
-  let cartList = document.getElementById('cartItemsList');
-  let totalElement = document.getElementById('totalPrice');
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
-  cartList.innerHTML = '';
-  let total = 0;
-  
-  cart.forEach(item => {
-    total += item.price * item.quantity;
-    cartList.innerHTML += `
-      <div class="d-flex justify-content-between mb-1">
-        <span>${item.name} x ${item.quantity}</span>
-        <span>Rs. ${item.price * item.quantity}</span>
+let cart = [];
+
+const productsDB = {
+  bags: [
+    {name: 'Used School Backpack - Black', price: 1200, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', desc: 'Condition 8/10, all zips working'},
+    {name: 'Used Laptop Bag - Brown', price: 1500, img: 'https://images.unsplash.com/photo-1547949003-9792a18a2601?w=400', desc: 'Condition 7/10, slight wear on corner'},
+    {name: 'Travel Duffle Bag - Blue', price: 2000, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', desc: 'Large size, excellent condition'},
+    {name: 'Ladies Handbag - Red', price: 900, img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400', desc: 'Used, minor scratches'},
+    {name: 'College Bag - Grey', price: 1100, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', desc: 'Like new, barely used'},
+    {name: 'Kids School Bag - Spiderman', price: 800, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', desc: 'Cartoon design, good condition'}
+  ],
+  toys: [
+    {name: 'Kids Toy Set - Cars', price: 500, img: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=400', desc: 'Assorted cars collection'},
+    {name: 'Doll House Set', price: 1500, img: 'https://images.unsplash.com/photo-1535572290543-960a520d9743?w=400', desc: 'Used, all pieces included'},
+    {name: 'Lego Blocks Box', price: 1200, img: 'https://images.unsplash.com/photo-1560961911-ba7ef0e60793?w=400', desc: '500+ pieces, mixed colors'},
+    {name: 'Remote Car - Red', price: 1800, img: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400', desc: 'Working, battery not included'}
+  ],
+  gadgets: [
+    {name: 'Used Wireless Earbuds', price: 1800, img: 'https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=400', desc: 'Sound perfect, case has scratches'},
+    {name: 'Used Smart Watch', price: 2500, img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400', desc: 'All functions working, screen clean'},
+    {name: 'Power Bank 10000mAh', price: 1500, img: 'https://images.unsplash.com/photo-1609092623738-3f2a7b9e0b2c?w=400', desc: 'Used, holds 80% charge'},
+    {name: 'Bluetooth Speaker', price: 2200, img: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400', desc: 'Loud sound, minor dents'}
+  ],
+  home: [
+    {name: 'Used Crockery Set', price: 900, img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400', desc: '6 Plates + 6 Cups, no chips'},
+    {name: 'Table Lamp', price: 700, img: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400', desc: 'Working, bulb included'},
+    {name: 'Wall Clock - Wooden', price: 600, img: 'https://images.unsplash.com/photo-1563861826100-bc4b2d0e8e1b?w=400', desc: 'Battery operated, used'},
+    {name: 'Cushion Set (2pcs)', price: 500, img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400', desc: 'Clean, washed, good condition'}
+  ]
+};
+
+function addToCart(name, price){
+  cart.push({name, price});
+  document.getElementById('cartCount').innerText = cart.length;
+  alert(name + " added to cart! ✅");
+}
+
+function openCategory(category){
+  const modal = document.getElementById('categoryModal');
+  const title = document.getElementById('categoryTitle');
+  const container = document.getElementById('categoryProducts');
+
+  const titles = {
+    bags: 'Bags Collection - All Varieties',
+    toys: 'Toys & Games - All Items',
+    gadgets: 'Electronics & Gadgets',
+    home: 'Home Essentials'
+  };
+
+  title.innerText = titles[category];
+  container.innerHTML = '';
+
+  productsDB[category].forEach(item => {
+    container.innerHTML += `
+      <div class="card">
+        <img src="${item.img}" alt="${item.name}">
+        <h3>${item.name}</h3>
+        <p>${item.desc}</p>
+        <p class="price">Rs. ${item.price}</p>
+        <button class="add-btn" onclick="addToCart('${item.name}',${item.price})">Add to Cart</button>
       </div>
     `;
   });
-  
-  totalElement.innerText = `Rs. ${total}`;
+
+  modal.style.display = 'block';
 }
 
-// Payment method select karne pe details show karo
-document.getElementById('paymentMethod').addEventListener('change', function() {
-  let payment = this.value;
-  let details = document.getElementById('paymentDetails');
-  let text = document.getElementById('paymentText');
-  
-  if(payment == 'Easypaisa') {
-    text.innerHTML = 'Easypaisa Account: 03012800023 <br> Name: Zenvy Tech <br> Payment ke baad screenshot WhatsApp karein';
-    details.style.display = 'block';
-  } else if(payment == 'JazzCash') {
-    text.innerHTML = 'JazzCash Account: 03012800023 <br> Name: Zenvy Tech <br> Payment ke baad screenshot WhatsApp karein';
-    details.style.display = 'block';
-  } else if(payment == 'Bank Transfer') {
-    text.innerHTML = 'Bank: HBL <br> Account #: 123456789 <br> Title: Zenvy Tech <br> Payment ke baad screenshot WhatsApp karein';
-    details.style.display = 'block';
-  } else {
-    details.style.display = 'none';
-  }
-});
+function closeCategory(){
+  document.getElementById('categoryModal').style.display = 'none';
+}
 
-// WhatsApp pe order bhejne ka function - ab dynamic
-function placeOrder() {
-  let name = document.getElementById('fullName').value;
-  let phone = document.getElementById('phoneNumber').value;
-  let city = document.getElementById('city').value;
-  let address = document.getElementById('deliveryAddress').value;
-  let postal = document.getElementById('postalCode').value;
-  let payment = document.getElementById('paymentMethod').value;
-  let notes = document.getElementById('additionalNotes').value;
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
-  if(!name || !phone || !city || !address || !postal || !payment){
-    alert('Please fill all required fields *');
-    return;
-  }
-  
+function openCheckout(){
   if(cart.length === 0){
-    alert('Your cart is empty!');
+    alert("Your cart is empty! Please add some products first 😄");
     return;
   }
-  
-  let productList = '';
+
+  let itemsHTML = '';
   let total = 0;
   cart.forEach((item, index) => {
-    productList += `${index + 1}. ${item.name} x ${item.quantity} = Rs. ${item.price * item.quantity} %0A`;
-    total += item.price * item.quantity;
+    itemsHTML += `<div class="order-item"><span>${index+1}. ${item.name}</span><span>Rs. ${item.price}</span></div>`;
+    total += item.price;
   });
-  
-  let message = `*NEW ORDER - ZENVY TECH* %0A%0A` +
-  `*ORDER SUMMARY* %0A${productList}` +
-  `*Total: Rs. ${total}* %0A%0A` +
-  `*CUSTOMER DETAILS* %0A` +
-  `Name: ${name} %0A` +
-  `Phone: ${phone} %0A` +
-  `City: ${city} %0A` +
-  `Address: ${address} %0A` +
-  `Postal Code: ${postal} %0A` +
-  `Payment Method: ${payment} %0A` +
-  `Notes: ${notes || 'None'} %0A%0A` +
-  `Please confirm my order. Thank you!`;
-  
-  window.open(`https://wa.me/923012800023?text=${message}`, '_blank');
+
+  document.getElementById('orderItems').innerHTML = itemsHTML;
+  document.getElementById('orderTotal').innerText = 'Rs. ' + total;
+  document.getElementById('checkoutModal').style.display = 'block';
 }
 
-// Jab modal khule to cart update ho
-document.getElementById('orderModal').addEventListener('show.bs.modal', updateOrderModal);
+function closeCheckout(){
+  document.getElementById('checkoutModal').style.display = 'none';
+}
+
+function submitOrder(event){
+  event.preventDefault();
+
+  const name = document.getElementById('customerName').value;
+  const phone = document.getElementById('customerPhone').value;
+  const address = document.getElementById('customerAddress').value;
+  const notes = document.getElementById('customerNotes').value;
+
+  let message = `*NEW ORDER - Zenvy Tech*%0A%0A`;
+  message += `*Customer Details:*%0A`;
+  message += `Name: ${name}%0A`;
+  message += `Phone: ${phone}%0A`;
+  message += `Address: ${address}%0A`;
+  if(notes) message += `Notes: ${notes}%0A`;
+
+  message += `%0A*Order Items:*%0A`;
+  let total = 0;
+  cart.forEach((item, index) => {
+    message += `${index+1}. ${item.name} - Rs.${item.price}%0A`;
+    total += item.price;
+  });
+
+  message += `%0A*Total Amount: Rs.${total}*%0A%0APlease confirm my order.`;
+
+  window.open("https://wa.me/923012800023?text=" + encodeURIComponent(message));
+
+  cart = [];
+  document.getElementById('cartCount').innerText = 0;
+  closeCheckout();
+  document.getElementById('orderForm').reset();
+}
+
+window.onclick = function(event) {
+  const catModal = document.getElementById('categoryModal');
+  const checkModal = document.getElementById('checkoutModal');
+  if (event.target == catModal) closeCategory();
+  if (event.target == checkModal) closeCheckout();
+}
 </script>
-<!-- Complete Order Modal End -->
+
+</body>
+</html>
