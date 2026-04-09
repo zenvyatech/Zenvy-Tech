@@ -114,7 +114,6 @@
     <nav>
       <a href="#home">Home</a>
       <a href="#products">Shop</a>
-      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -180,7 +179,7 @@
       <p>📍 Napier Quarter, Karachi | WhatsApp: 03012800023</p>
     </div>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.515!2d67.0114!3d24.8606!2m3!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44597a35!2sNapier%20Quarter%2C%20Karachi!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps?q=Napier+Quarter+Karachi&output=embed" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </section>
 
@@ -195,7 +194,6 @@
         <h4>Quick Links</h4>
         <a href="#home">Home</a>
         <a href="#products">All Products</a>
-        <a href="#about">About Us</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="footer-col">
@@ -203,7 +201,6 @@
         <a href="#">Shipping Policy</a>
         <a href="#">Returns & Refunds</a>
         <a href="#">Privacy Policy</a>
-        <a href="#">Terms & Conditions</a>
       </div>
       <div class="footer-col">
         <h4>Payment Methods</h4>
@@ -264,7 +261,7 @@
           </div>
           <div class="form-group">
             <label>Payment Method *</label>
-            <select id="paymentMethod" required>
+            <select id="paymentMethod" required onchange="showPaymentDetails()">
               <option value="" selected disabled>Select payment method</option>
               <option value="Cash on Delivery">Cash on Delivery - COD</option>
               <option value="Easypaisa">Easypaisa</option>
@@ -289,7 +286,7 @@
 let cart = [];
 let currentFilter = 'all';
 
-// SAB 57 PRODUCTS - Tumhari screenshots se 100% copy
+// SAB 57 PRODUCTS - TUMHARI SCREENSHOTS SE 100% COPY
 const products = [
   {id:1, name:'Kids Erasable Tracing Book', price:700, oldPrice:1000, img:'images/tracingbook.jpg', desc:`Kids Erasable Tracing Book\n\nReusable writing practice book for kids\nPen Control Training | Left & Right Brain Development\nRs 700/-`, category:'kids'},
   {id:2, name:'Silicon Face Ice Roller', price:600, oldPrice:700, img:'images/iceroller.jpg', desc:`Silicon Face Ice Roller (Live Pic)\n\nFor face massage, reduce puffiness\nAvailable in multiple colors\nRs 600/-`, category:'beauty'},
@@ -326,8 +323,5 @@ const products = [
   {id:33, name:'Double Ended Spray Water Fan', price:4200, oldPrice:4500, img:'images/sprayfan.jpg', desc:`Double Ended Spray Water Mist Fan\n\nSpiral fan blade High pressure wind blowing far\nStrong motor with large Angle screw blade, directional guide hood to make the air supply distance longer, more concentrated, accelerate air circulation\n\nDiscount On Quantity`, category:'home'},
   {id:34, name:'Rabbit Handle Clear Desk Organizer', price:1100, oldPrice:1200, img:'images/organizer.jpg', desc:`Perfect for Pens, Makeup, Jewelry & More | Light weight PE Material | Ideal for Office & Home Storage\nRs 1100/= Each ✅\nRandom Colours ✨✨`, category:'home'},
   {id:35, name:'Manual Soap & Shampoo Dispenser Wall Mounted 350ML', price:1800, oldPrice:1900, img:'images/soapdispenser.jpg', desc:`NEW ARRIVAL 🇨🇳\nHigh Quality\nManual Soap & Shampoo Dispenser Wall Mounted 350ML\n(Random Colors)\nRs 1800/- Each ✨✅\nWith Box`, category:'home'},
-  {id:36, name:'Dell Chromebook', price:12000,
-
-   
-
-   
+  {id:36, name:'Dell Chromebook', price:12000, oldPrice:15000, img:'images/chromebook.jpg', desc:`✅ Make: Dell\n✅ Model: Chromebook\n✅ Operating Sys: Chrome OS\n✅ Processor: Intel Celeron\n✅ Update: 2027\n✅ Display: 11.6 Inches\n✅ Ram: 4 GB\n✅ Storage: 16 GB\n✅ Bluetooth: Yes\n✅ Wifi: Yes\n✅ Ports: USB 3.0\n✅ Camera: Yes\n✅ Best for online classes, Office use & Online working\n✅ 07 Days Checking warranty !\n
+  
