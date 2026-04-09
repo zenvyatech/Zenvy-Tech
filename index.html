@@ -11,46 +11,48 @@
     header h1 {font-size:24px}
     nav a {color:white; text-decoration:none; margin-left:20px; font-weight:500}
 
-   .hero {background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=1200')center/cover; color:white; text-align:center; padding:100px 20px}
-   .hero h2 {font-size:40px; margin-bottom:10px; text-shadow:2px 2px 4px rgba(0,0,0,0.5)}
-   .hero p {font-size:18px; text-shadow:1px 1px 2px rgba(0,0,0,0.5)}
-   .btn {background:#f59e0b; color:black; padding:12px 25px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; text-decoration:none; display:inline-block; margin-top:20px}
+  .hero {background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=1200')center/cover; color:white; text-align:center; padding:100px 20px}
+  .hero h2 {font-size:40px; margin-bottom:10px; text-shadow:2px 2px 4px rgba(0,0,0,0.5)}
+  .hero p {font-size:18px; text-shadow:1px 1px 2px rgba(0,0,0,0.5)}
+  .btn {background:#f59e0b; color:black; padding:12px 25px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; text-decoration:none; display:inline-block; margin-top:20px}
 
-   .section {padding:50px 5%}
-   .section h2 {font-size:30px; margin-bottom:30px; color:#1e3a8a; text-align:center}
-   .products {display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px}
-   .card {background:white; border-radius:12px; padding:15px; box-shadow:0 4px 12px rgba(0,0,0,0.08); text-align:center; transition:0.3s}
-   .card:hover {transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.15)}
-   .card img {width:100%; height:160px; object-fit:cover; border-radius:8px}
-   .card h3 {margin:12px 0 5px; color:#1e3a8a; font-size:18px}
-   .card p {color:#64748b; font-size:14px; margin:8px 0}
-   .price {color:#059669; font-weight:bold; font-size:18px; margin:8px 0}
-   .add-btn {margin-top:10px; padding:10px; width:100%; border:none; background:#1e3a8a; color:white; cursor:pointer; border-radius:8px; font-weight:600}
-   .add-btn:hover {background:#1e40af}
-   .view-btn {margin-top:8px; padding:10px; width:100%; border:2px solid #1e3a8a; background:white; color:#1e3a8a; cursor:pointer; border-radius:8px; font-weight:600}
-   .view-btn:hover {background:#f1f5f9}
-   .cart {position:fixed; bottom:25px; right:25px; background:#22c55e; color:white; padding:15px 20px; border-radius:50px; cursor:pointer; font-weight:bold; box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:100}
-   .cart span {background:red; color:white; padding:2px 8px; border-radius:50%; margin-left:5px; font-size:14px}
+  .section {padding:50px 5%}
+  .section h2 {font-size:30px; margin-bottom:30px; color:#1e3a8a; text-align:center}
+  .products {display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px}
+  .card {background:white; border-radius:12px; padding:15px; box-shadow:0 4px 12px rgba(0,0,0,0.08); text-align:center; transition:0.3s}
+  .card:hover {transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.15)}
+  .card img {width:100%; height:160px; object-fit:cover; border-radius:8px}
+  .card h3 {margin:12px 0 5px; color:#1e3a8a; font-size:18px}
+  .card p {color:#64748b; font-size:14px; margin:8px 0}
+  .price {color:#059669; font-weight:bold; font-size:18px; margin:8px 0}
+  .add-btn {margin-top:10px; padding:10px; width:100%; border:none; background:#1e3a8a; color:white; cursor:pointer; border-radius:8px; font-weight:600}
+  .add-btn:hover {background:#1e40af}
+  .view-btn {margin-top:8px; padding:10px; width:100%; border:2px solid #1e3a8a; background:white; color:#1e3a8a; cursor:pointer; border-radius:8px; font-weight:600}
+  .view-btn:hover {background:#f1f5f9}
+  .cart {position:fixed; bottom:25px; right:25px; background:#22c55e; color:white; padding:15px 20px; border-radius:50px; cursor:pointer; font-weight:bold; box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:100}
+  .cart span {background:red; color:white; padding:2px 8px; border-radius:50%; margin-left:5px; font-size:14px}
 
-   .modal {display:none; position:fixed; z-index:200; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.7); overflow:auto}
-   .modal-content {background:#f8fafc; margin:3% auto; padding:25px; border-radius:12px; width:95%; max-width:1200px; animation:slideDown 0.3s; max-height:90vh; overflow-y:auto}
+  .modal {display:none; position:fixed; z-index:200; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.7); overflow:auto}
+  .modal-content {background:#f8fafc; margin:3% auto; padding:25px; border-radius:12px; width:95%; max-width:1200px; animation:slideDown 0.3s; max-height:90vh; overflow-y:auto}
     @keyframes slideDown {from{transform:translateY(-50px); opacity:0} to{transform:translateY(0); opacity:1}}
-   .modal-header {display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding-bottom:15px; border-bottom:2px solid #e2e8f0}
-   .modal-header h3 {color:#1e3a8a; font-size:24px}
-   .close-modal {background:#ef4444; color:white; border:none; padding:8px 16px; border-radius:8px; cursor:pointer; font-weight:bold}
-   .close-modal:hover {background:#dc2626}
+  .modal-header {display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding-bottom:15px; border-bottom:2px solid #e2e8f0}
+  .modal-header h3 {color:#1e3a8a; font-size:24px}
+  .close-modal {background:#ef4444; color:white; border:none; padding:8px 16px; border-radius:8px; cursor:pointer; font-weight:bold}
+  .close-modal:hover {background:#dc2626}
 
-   .form-group {margin-bottom:15px}
-   .form-group label {display:block; margin-bottom:5px; font-weight:600; color:#1e293b}
-   .form-group input,.form-group textarea {width:100%; padding:10px; border:2px solid #e2e8f0; border-radius:8px; font-size:15px}
-   .form-group input:focus,.form-group textarea:focus {outline:none; border-color:#1e3a8a}
-   .modal-btn {padding:12px; width:100%; border:none; border-radius:8px; font-weight:bold; cursor:pointer; margin-top:10px}
-   .submit-btn {background:#22c55e; color:white}
-   .submit-btn:hover {background:#16a34a}
-   .order-summary {background:white; padding:15px; border-radius:8px; margin-bottom:20px}
-   .order-summary h4 {margin-bottom:10px; color:#1e3a8a}
-   .order-item {display:flex; justify-content:space-between; margin:5px 0; font-size:14px}
-   .order-total {border-top:2px solid #cbd5e1; padding-top:10px; margin-top:10px; font-weight:bold; display:flex; justify-content:space-between}
+  .form-group {margin-bottom:15px}
+  .form-group label {display:block; margin-bottom:5px; font-weight:600; color:#1e293b}
+  .form-group input,.form-group textarea,.form-group select {width:100%; padding:10px; border:2px solid #e2e8f0; border-radius:8px; font-size:15px}
+  .form-group input:focus,.form-group textarea:focus,.form-group select:focus {outline:none; border-color:#1e3a8a}
+  .modal-btn {padding:12px; width:100%; border:none; border-radius:8px; font-weight:bold; cursor:pointer; margin-top:10px}
+  .submit-btn {background:#22c55e; color:white}
+  .submit-btn:hover {background:#16a34a}
+  .order-summary {background:white; padding:15px; border-radius:8px; margin-bottom:20px}
+  .order-summary h4 {margin-bottom:10px; color:#1e3a8a}
+  .order-item {display:flex; justify-content:space-between; margin:5px 0; font-size:14px}
+  .order-total {border-top:2px solid #cbd5e1; padding-top:10px; margin-top:10px; font-weight:bold; display:flex; justify-content:space-between}
+  .payment-info {background:#dbeafe; padding:12px; border-radius:8px; margin-bottom:15px; display:none}
+  .payment-info small {color:#1e40af; line-height:1.6}
 
     footer {background:#1e3a8a; color:white; text-align:center; padding:30px 5%; margin-top:40px}
     footer a {color:#f59e0b; text-decoration:none}
@@ -110,7 +112,6 @@
     </div>
   </section>
 
-  <!-- YE WALE SECTION WAPAS AA GAYE HAIN 👇 -->
   <section class="section" id="about" style="background:white">
     <h2>Why Choose Zenvy Tech?</h2>
     <p style="max-width:700px; margin:auto; line-height:1.8; text-align:center">We are Karachi's most trusted online store for quality products at affordable prices. Every item is thoroughly checked before delivery. Used products are in excellent condition. Get up to 50% off market rates. Simply add to cart and checkout via WhatsApp for fast home delivery.</p>
@@ -128,7 +129,6 @@
     <p>© 2026 Zenvy Tech. All Rights Reserved.</p>
     <p><a href="#home">Back to Top</a></p>
   </footer>
-  <!-- YAHAN TAK WAPAS AA GAYE HAIN 👆 -->
 
   <div class="cart" onclick="openCheckout()">🛒 Cart <span id="cartCount">0</span></div>
 
@@ -143,7 +143,7 @@
     </div>
   </div>
 
-  <!-- CHECKOUT MODAL -->
+  <!-- CHECKOUT MODAL - YAHAN SAB ADD KIYA HAI -->
   <div id="checkoutModal" class="modal">
     <div class="modal-content" style="max-width:500px; background:white;">
       <div class="modal-header">
@@ -172,8 +172,37 @@
         </div>
 
         <div class="form-group">
+          <label>City *</label>
+          <input type="text" id="customerCity" required placeholder="e.g. Karachi, Lahore">
+        </div>
+
+        <div class="form-group">
           <label>Complete Delivery Address *</label>
-          <textarea id="customerAddress" required rows="3" placeholder="House #, Street, Area, City"></textarea>
+          <textarea id="customerAddress" required rows="3" placeholder="House #, Street, Area"></textarea>
+        </div>
+
+        <!-- NAYA FIELD 1: POSTAL CODE -->
+        <div class="form-group">
+          <label>Postal Code *</label>
+          <input type="text" id="customerPostal" required placeholder="e.g. 74000">
+        </div>
+
+        <!-- NAYA FIELD 2: PAYMENT METHOD -->
+        <div class="form-group">
+          <label>Payment Method *</label>
+          <select id="paymentMethod" required>
+            <option value="" selected disabled>Select payment method</option>
+            <option value="Cash on Delivery">Cash on Delivery - COD</option>
+            <option value="Easypaisa">Easypaisa</option>
+            <option value="JazzCash">JazzCash</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+          </select>
+        </div>
+
+        <!-- PAYMENT DETAILS BOX - Khud show hoga -->
+        <div class="payment-info" id="paymentDetails">
+          <small><strong>Payment Details:</strong><br>
+          <span id="paymentText"></span></small>
         </div>
 
         <div class="form-group">
@@ -280,19 +309,46 @@ function closeCheckout(){
   document.getElementById('checkoutModal').style.display = 'none';
 }
 
+// NAYA CODE: Payment method select karne pe details show karo
+document.getElementById('paymentMethod').addEventListener('change', function() {
+  let payment = this.value;
+  let details = document.getElementById('paymentDetails');
+  let text = document.getElementById('paymentText');
+
+  if(payment == 'Easypaisa') {
+    text.innerHTML = 'Easypaisa Account: 03012800023 <br> Name: Zenvy Tech <br> Payment ke baad screenshot WhatsApp karein';
+    details.style.display = 'block';
+  } else if(payment == 'JazzCash') {
+    text.innerHTML = 'JazzCash Account: 03012800023 <br> Name: Zenvy Tech <br> Payment ke baad screenshot WhatsApp karein';
+    details.style.display = 'block';
+  } else if(payment == 'Bank Transfer') {
+    text.innerHTML = 'Bank: HBL <br> Account #: 123456789 <br> Title: Zenvy Tech <br> Payment ke baad screenshot WhatsApp karein';
+    details.style.display = 'block';
+  } else {
+    details.style.display = 'none';
+  }
+});
+
+// UPDATED: Submit order with new fields
 function submitOrder(event){
   event.preventDefault();
 
   const name = document.getElementById('customerName').value;
   const phone = document.getElementById('customerPhone').value;
+  const city = document.getElementById('customerCity').value;
   const address = document.getElementById('customerAddress').value;
+  const postal = document.getElementById('customerPostal').value;
+  const payment = document.getElementById('paymentMethod').value;
   const notes = document.getElementById('customerNotes').value;
 
   let message = `*NEW ORDER - Zenvy Tech*%0A%0A`;
   message += `*Customer Details:*%0A`;
   message += `Name: ${name}%0A`;
   message += `Phone: ${phone}%0A`;
+  message += `City: ${city}%0A`;
   message += `Address: ${address}%0A`;
+  message += `Postal Code: ${postal}%0A`;
+  message += `Payment Method: ${payment}%0A`;
   if(notes) message += `Notes: ${notes}%0A`;
 
   message += `%0A*Order Items:*%0A`;
@@ -310,6 +366,7 @@ function submitOrder(event){
   document.getElementById('cartCount').innerText = 0;
   closeCheckout();
   document.getElementById('orderForm').reset();
+  document.getElementById('paymentDetails').style.display = 'none';
 }
 
 window.onclick = function(event) {
