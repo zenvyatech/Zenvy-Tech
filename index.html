@@ -82,4 +82,76 @@
         <h3>Smart Watch</h3>
         <p>Used, excellent working condition</p>
         <p class="price">Rs. 2,500</p>
-        <button class="add-btn" onclick="
+        <button class="add-btn" onclick="addToCart('Smart Watch',2500)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400" alt="Crockery">
+        <h3>Crockery Set</h3>
+        <p>6 Plates + 6 Cups premium set</p>
+        <p class="price">Rs. 900</p>
+        <button class="add-btn" onclick="addToCart('Crockery Set',900)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Shoes">
+        <h3>Sports Shoes</h3>
+        <p>Available in sizes 40-44</p>
+        <p class="price">Rs. 1,500</p>
+        <button class="add-btn" onclick="addToCart('Sports Shoes',1500)">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="about" style="background:white">
+    <h2>Why Choose Zenvy Tech?</h2>
+    <p style="max-width:700px; margin:auto; line-height:1.8; text-align:center">We are Karachi's most trusted online store for quality products at affordable prices. Every item is thoroughly checked before delivery. Used products are in excellent condition. Get up to 50% off market rates. Simply add to cart and checkout via WhatsApp for fast home delivery.</p>
+  </section>
+
+  <section class="section" id="contact" style="text-align:center">
+    <h2>Contact Us</h2>
+    <p>For orders or inquiries:</p>
+    <br>
+    <p style="font-size:18px; font-weight:bold">WhatsApp: 03012800023</p>
+    <p style="margin-top:10px">Location: Karachi, Pakistan</p>
+  </section>
+
+  <div class="cart" onclick="checkout()">🛒 Cart <span id="cartCount">0</span></div>
+
+  <footer>
+    <p>© 2026 Zenvy Tech. All Rights Reserved.</p>
+    <p><a href="#home">Back to Top</a></p>
+  </footer>
+
+<script>
+let cart = [];
+
+function addToCart(name, price){
+  cart.push({name, price});
+  document.getElementById('cartCount').innerText = cart.length;
+  alert(name + " added to cart! ✅");
+}
+
+function checkout(){
+  if(cart.length === 0){
+    alert("Your cart is empty! Please add some products first 😄");
+    return;
+  }
+  
+  let message = "Hello! I would like to place an order from Zenvy Tech:%0A%0A";
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    message += (index+1) + ". " + item.name + " - Rs." + item.price + "%0A";
+    total += item.price;
+  });
+
+  message += "%0A*Total: Rs." + total + "*%0A%0APlease confirm my order.";
+
+  window.open("https://wa.me/923012800023?text=" + message);
+}
+</script>
+
+</body>
+</html>
