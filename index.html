@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zenvy Tech - Sasta Bazar | Online Order Karo</title>
+  <title>Zenvy Tech - Online Store | Best Deals in Pakistan</title>
   <style>
     * {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif}
-    body {background:#f8fafc; color:#1e293b; padding-top:60px}
-    header {background:#1e3a8a; color:white; padding:15px 5%; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100}
+    body {background:#f8fafc; color:#1e293b; padding-top:80px}
+    header {background:#1e3a8a; color:white; padding:15px 5%; display:flex; justify-content:space-between; align-items:center; position:fixed; top:0; left:0; right:0; z-index:100}
     header h1 {font-size:24px}
     nav a {color:white; text-decoration:none; margin-left:20px; font-weight:500}
     .hero {background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://images.unsplash.com/photo-1607082348824-0a96f2a7b9da')center/cover; color:white; text-align:center; padding:80px 20px}
@@ -20,6 +20,7 @@
     .card:hover {transform:translateY(-5px)}
     .card img {width:100%; height:160px; object-fit:cover; border-radius:8px}
     .card h3 {margin:12px 0 5px; color:#1e3a8a; font-size:18px}
+    .card p {color:#64748b; font-size:14px; margin:8px 0}
     .price {color:#059669; font-weight:bold; font-size:18px; margin:8px 0}
     .add-btn {margin-top:10px; padding:10px; width:100%; border:none; background:#1e3a8a; color:white; cursor:pointer; border-radius:8px; font-weight:600}
     .add-btn:hover {background:#1e40af}
@@ -36,120 +37,49 @@
     <h1>Zenvy Tech</h1>
     <nav>
       <a href="#home">Home</a>
-      <a href="#products">Maal</a>
-      <a href="#about">Hamare Baare Me</a>
-      <a href="#contact">Rabta</a>
+      <a href="#products">Products</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <section class="hero" id="home">
-    <h2>Zenvy Tech Sasta Bazar</h2>
-    <p>Bags, Khilonay, Gadgets, Ghar Ka Saman — Used & New, Sab Kuch Sastay Daam Me</p>
-    <a href="#products" class="btn">Maal Dekho</a>
+    <h2>Zenvy Tech Online Store</h2>
+    <p>Bags, Toys, Gadgets, Home Essentials — Used & New Products at Unbeatable Prices</p>
+    <a href="#products" class="btn">Shop Now</a>
   </section>
 
   <section class="section" id="products">
-    <h2>Hamara Maal</h2>
+    <h2>Our Products</h2>
     <div class="products">
       
       <div class="card">
         <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400" alt="Bag">
-        <h3>School Bag</h3>
-        <p>YAHAN DETAIL LIKHO - Bilkul new jaisa</p>
-        <p class="price">Rs. 1200</p>
-        <button class="add-btn" onclick="addToCart('School Bag',1200)">Cart Me Dalo</button>
+        <h3>School Backpack</h3>
+        <p>Premium quality, like new condition</p>
+        <p class="price">Rs. 1,200</p>
+        <button class="add-btn" onclick="addToCart('School Backpack',1200)">Add to Cart</button>
       </div>
 
       <div class="card">
         <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=400" alt="Toys">
-        <h3>Bachon Ke Khilonay</h3>
-        <p>YAHAN DETAIL LIKHO - Cars, dolls set</p>
+        <h3>Kids Toy Set</h3>
+        <p>Assorted cars & dolls collection</p>
         <p class="price">Rs. 500</p>
-        <button class="add-btn" onclick="addToCart('Khilonay Set',500)">Cart Me Dalo</button>
+        <button class="add-btn" onclick="addToCart('Kids Toy Set',500)">Add to Cart</button>
       </div>
 
       <div class="card">
         <img src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=400" alt="Earbuds">
         <h3>Wireless Earbuds</h3>
-        <p>YAHAN DETAIL LIKHO - Achi sound quality</p>
-        <p class="price">Rs. 1800</p>
-        <button class="add-btn" onclick="addToCart('Earbuds',1800)">Cart Me Dalo</button>
+        <p>High quality sound, long battery life</p>
+        <p class="price">Rs. 1,800</p>
+        <button class="add-btn" onclick="addToCart('Wireless Earbuds',1800)">Add to Cart</button>
       </div>
 
       <div class="card">
         <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="Watch">
         <h3>Smart Watch</h3>
-        <p>YAHAN DETAIL LIKHO - Used, saaf condition</p>
-        <p class="price">Rs. 2500</p>
-        <button class="add-btn" onclick="addToCart('Smart Watch',2500)">Cart Me Dalo</button>
-      </div>
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400" alt="Crockery">
-        <h3>Crockery Set</h3>
-        <p>YAHAN DETAIL LIKHO - 6 plates + cups</p>
-        <p class="price">Rs. 900</p>
-        <button class="add-btn" onclick="addToCart('Crockery Set',900)">Cart Me Dalo</button>
-      </div>
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Shoes">
-        <h3>Sports Shoes</h3>
-        <p>YAHAN DETAIL LIKHO - Size 40-44 available</p>
-        <p class="price">Rs. 1500</p>
-        <button class="add-btn" onclick="addToCart('Sports Shoes',1500)">Cart Me Dalo</button>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section" id="about" style="background:white">
-    <h2>Zenvy Tech Kyun?</h2>
-    <p style="max-width:700px; margin:auto; line-height:1.8; text-align:center">YAHAN APNI DETAIL LIKHO - Hum Karachi ka sab se trusted sasta bazar hain. Har maal check kar ke dete hain. Used bhi new jaisa. Rate market se 50% kam. Jo pasand aaye WhatsApp pe order kardo, ghar bethay mil jayega.</p>
-  </section>
-
-  <section class="section" id="contact" style="text-align:center">
-    <h2>Rabta Karein</h2>
-    <p>Order ya kisi sawal ke liye:</p>
-    <br>
-    <p style="font-size:18px; font-weight:bold">WhatsApp: YAHAN APNA NUMBER LIKHO</p>
-    <p style="margin-top:10px">Location: YAHAN APNA AREA LIKHO - Karachi</p>
-  </section>
-
-  <div class="cart" onclick="checkout()">🛒 Cart <span id="cartCount">0</span></div>
-
-  <footer>
-    <p>© 2026 Zenvy Tech - Sasta Bazar. All Rights Reserved.</p>
-    <p><a href="#home">Upar Jao</a></p>
-  </footer>
-
-<script>
-let cart = [];
-
-function addToCart(name, price){
-  cart.push({name, price});
-  document.getElementById('cartCount').innerText = cart.length;
-  alert(name + " cart me add ho gaya! ✅");
-}
-
-function checkout(){
-  if(cart.length === 0){
-    alert("Cart khali hai bhai! Pehle kuch add karo 😄");
-    return;
-  }
-  
-  let message = "Assalam o Alaikum! Zenvy Tech se order:%0A%0A";
-  let total = 0;
-
-  cart.forEach((item, index) => {
-    message += (index+1) + ". " + item.name + " - Rs." + item.price + "%0A";
-    total += item.price;
-  });
-
-  message += "%0A*Total: Rs." + total + "*%0A%0AYe order confirm kardo.";
-
-  // YAHAN APNA WHATSAPP NUMBER LIKHO - 92 se start karna, 0 nahi lagana
-  window.open("https://wa.me/923012800023?text=" + message);
-</script>
-</body>
-</html>
+        <p>Used, excellent working condition</p>
+        <p class="price">Rs. 2,500</p>
+        <button class="add-btn" onclick="
