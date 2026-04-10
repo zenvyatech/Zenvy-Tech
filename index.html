@@ -3,285 +3,273 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zenvy Tech - Pakistan's Trusted Online Marketplace</title>
+  <title>Zenvy Tech</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-    * {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif}
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    * {margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif}
     :root {
-      --primary:#2563eb; --primary-dark:#1e40af; --secondary:#f59e0b; --success:#22c55e; --danger:#ef4444; --bg:#f1f5f9; --card:#ffffff; --text:#0f172a; --text-light:#64748b; --border:#e2e8f0;
+      --primary:#00BFFF; --dark:#0a0a0a; --text:#1a1a1a; --text-light:#666; --bg:#ffffff; --bg-light:#f8f8f8; --border:#e5e5e5;
     }
-    body {background:var(--bg); color:var(--text); padding-top:75px}
-    header {background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:white; padding:15px 5%; display:flex; justify-content:space-between; align-items:center; position:fixed; top:0; left:0; right:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.1)}
-    .logo {display:flex; align-items:center; gap:10px}
-    .logo h1 {font-size:26px; font-weight:700}
-    .logo span {background:var(--secondary); color:var(--text); padding:2px 8px; border-radius:6px; font-size:11px; font-weight:600}
-    nav {display:flex; gap:25px; align-items:center}
-    nav a {color:white; text-decoration:none; font-weight:500; font-size:15px; transition:0.2s}
-    nav a:hover {color:var(--secondary)}
-    .hero {background:linear-gradient(rgba(37,99,235,0.9),rgba(30,64,175,0.9)),url('https://images.unsplash.com/photo-1557821552-17105176677c?w=1400')center/cover; color:white; text-align:center; padding:100px 20px 60px}
-    .hero h2 {font-size:42px; margin-bottom:15px; font-weight:700; text-shadow:2px 2px 4px rgba(0,0,0,0.3)}
-    .hero p {font-size:18px; margin-bottom:25px; opacity:0.95}
-    .stats {display:flex; justify-content:center; gap:40px; margin-top:30px; flex-wrap:wrap}
-    .stat {text-align:center}
-    .stat h3 {font-size:32px; font-weight:700; color:var(--secondary)}
-    .stat p {font-size:14px; opacity:0.9}
-    .btn {background:var(--secondary); color:var(--text); padding:14px 32px; border:none; border-radius:10px; font-weight:600; cursor:pointer; text-decoration:none; display:inline-block; font-size:16px; transition:0.3s; box-shadow:0 4px 12px rgba(245,158,11,0.3)}
-    .btn:hover {transform:translateY(-2px); box-shadow:0 6px 16px rgba(245,158,11,0.4)}
-    .section {padding:50px 5%}
-    .section-header {text-align:center; margin-bottom:40px}
-    .section-header h2 {font-size:32px; margin-bottom:10px; color:var(--primary); font-weight:700}
-    .section-header p {color:var(--text-light); font-size:15px}
-    .coming-soon {text-align:center; padding:80px 20px; background:var(--card); border-radius:16px; border:2px dashed var(--border)}
-    .coming-soon h3 {font-size:28px; margin-bottom:15px; color:var(--text)}
-    .coming-soon p {color:var(--text-light); font-size:16px}
-    .trust-badges {display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; margin:40px 0}
-    .badge {text-align:center; padding:20px; background:var(--card); border-radius:12px; border:1px solid var(--border)}
-    .badge-icon {font-size:32px; margin-bottom:10px}
-    .badge h4 {font-size:16px; margin-bottom:5px; color:var(--text)}
-    .badge p {font-size:13px; color:var(--text-light)}
-    footer {background:var(--text); color:white; padding:50px 5% 20px; margin-top:60px}
-    .footer-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:40px; margin-bottom:30px}
-    .footer-col h4 {margin-bottom:15px; font-size:18px}
-    .footer-col p, .footer-col a {color:#cbd5e1; font-size:14px; line-height:1.8; text-decoration:none; display:block; margin-bottom:8px}
-    .footer-col a:hover {color:var(--secondary)}
-    .footer-bottom {border-top:1px solid #334155; padding-top:20px; text-align:center; color:#94a3b8; font-size:14px}
-    .map-container {margin:25px auto; max-width:700px; border-radius:16px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1); border:1px solid var(--border)}
-    @media(max-width:768px){
-      header{padding:12px 4%} .logo h1{font-size:20px} nav{display:none}
-      .hero h2{font-size:28px} .hero{padding:80px 20px 40px} .stats{gap:25px}
-      .section{padding:35px 4%}
+    body {background:var(--bg); color:var(--text); overflow-x:hidden}
+    
+    /* Header - Transparent start, white on scroll */
+    header {position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 5%; display:flex; justify-content:space-between; align-items:center; transition:0.3s}
+    header.scrolled {background:white; box-shadow:0 2px 10px rgba(0,0,0,0.1); padding:15px 5%}
+    .logo {color:var(--primary); font-size:24px; font-weight:700; letter-spacing:1px}
+    header.scrolled .logo {color:var(--primary)}
+    .menu-btn {background:none; border:none; cursor:pointer; display:flex; flex-direction:column; gap:5px}
+    .menu-btn span {width:25px; height:2px; background:var(--primary); transition:0.3s}
+    header.scrolled .menu-btn span {background:var(--text)}
+    
+    /* Hero - Full screen image with parallax */
+    .hero {height:100vh; background:url('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=1600')center/cover fixed; display:flex; align-items:center; justify-content:center; position:relative}
+    .hero::after {content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4))}
+    .hero-text {position:absolute; left:8%; top:50%; transform:translateY(-50%); z-index:2}
+    .hero-text h1 {font-size:120px; font-weight:700; color:var(--primary); line-height:1; text-shadow:2px 2px 10px rgba(0,0,0,0.3)}
+    
+    /* Collection Section */
+    .section {padding:60px 5%}
+    .section-title {text-align:center; font-size:32px; font-weight:600; margin-bottom:30px}
+    .filters {display:flex; gap:12px; justify-content:center; margin-bottom:40px; flex-wrap:wrap}
+    .filter-btn {padding:12px 28px; border:none; background:var(--dark); color:white; border-radius:8px; cursor:pointer; font-weight:500; font-size:15px; transition:0.2s}
+    .filter-btn.active {background:var(--primary)}
+    .filter-btn:hover {opacity:0.85}
+    
+    /* Products Grid */
+    .products {display:flex; flex-direction:column; gap:20px; max-width:600px; margin:0 auto}
+    .product-card {background:var(--bg); border-radius:20px; overflow:hidden; box-shadow:0 2px 15px rgba(0,0,0,0.08)}
+    .product-img {width:100%; height:400px; background:#f5f5f5; object-fit:cover}
+    .product-info {padding:20px}
+    .product-info h3 {font-size:20px; font-weight:600; margin-bottom:8px}
+    .product-info .price {font-size:18px; color:var(--text-light)}
+    
+    /* Features */
+    .features {display:flex; flex-direction:column; gap:40px; text-align:center; padding:60px 5%; background:var(--bg)}
+    .feature {display:flex; flex-direction:column; align-items:center; gap:12px}
+    .feature-icon {font-size:40px}
+    .feature h4 {font-size:20px; font-weight:600}
+    .feature p {color:var(--text-light); font-size:15px; max-width:400px}
+    
+    /* Testimonials */
+    .testimonials {padding:60px 5%; background:var(--bg-light)}
+    .testimonial-card {background:var(--bg); padding:25px; border-radius:12px; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+    .testimonial-card p {font-size:16px; line-height:1.6; margin-bottom:12px; font-style:italic}
+    .testimonial-card .author {font-weight:600; color:var(--text)}
+    
+    /* Newsletter */
+    .newsletter {background:var(--dark); color:white; padding:60px 5%; text-align:center}
+    .newsletter h2 {font-size:28px; margin-bottom:12px}
+    .newsletter p {color:#aaa; margin-bottom:25px}
+    .newsletter-form {display:flex; gap:0; max-width:500px; margin:0 auto}
+    .newsletter-form input {flex:1; padding:14px 20px; border:none; border-radius:8px 0 0 8px; font-size:15px}
+    .newsletter-form button {padding:14px 30px; background:var(--primary); color:white; border:none; border-radius:0 8px 8px 0; font-weight:600; cursor:pointer}
+    
+    /* Stats */
+    .stats {display:grid; grid-template-columns:1fr 1fr; gap:40px; padding:60px 5%; text-align:center; background:var(--bg)}
+    .stat h3 {font-size:48px; font-weight:700; color:var(--primary); margin-bottom:8px}
+    .stat p {color:var(--text-light); font-size:16px}
+    .stat:nth-child(3) {grid-column:1/-1}
+    
+    /* Brands */
+    .brands {padding:60px 5%; background:var(--bg-light); text-align:center}
+    .brands h2 {font-size:28px; margin-bottom:40px}
+    .brand-logos {display:flex; justify-content:center; align-items:center; gap:40px; flex-wrap:wrap; opacity:0.6}
+    .brand-logos img {height:30px; filter:grayscale(100%)}
+    
+    /* Footer */
+    footer {background:var(--dark); color:white; padding:50px 5% 20px}
+    .footer-logo {text-align:center; margin-bottom:10px}
+    .footer-logo h3 {font-size:32px; color:var(--primary); font-weight:700}
+    .footer-logo p {color:#888; font-size:14px; margin-top:8px}
+    .footer-links {text-align:center; margin:30px 0}
+    .footer-links h4 {color:var(--primary); margin-bottom:15px; font-size:18px}
+    .footer-links a {display:block; color:#aaa; text-decoration:none; margin:8px 0; font-size:15px}
+    .footer-social {display:flex; justify-content:center; gap:15px; margin:25px 0}
+    .footer-social a {width:40px; height:40px; background:var(--primary); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; text-decoration:none}
+    .footer-bottom {text-align:center; padding-top:25px; border-top:1px solid #222; color:#666; font-size:13px}
+    
+    /* WhatsApp Float */
+    .whatsapp-float {position:fixed; bottom:25px; right:25px; width:60px; height:60px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 15px rgba(37,211,102,0.4); z-index:999; cursor:pointer; transition:0.3s}
+    .whatsapp-float:hover {transform:scale(1.1)}
+    .whatsapp-float svg {width:32px; height:32px; fill:white}
+    
+    @media(min-width:768px){
+      .hero-text h1 {font-size:180px}
+      .products {max-width:1200px; display:grid; grid-template-columns:repeat(3,1fr)}
+      .features {flex-direction:row; justify-content:center}
+      .stats {grid-template-columns:repeat(3,1fr)}
+      .stat:nth-child(3) {grid-column:auto}
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">
-      <h1>Zenvy Tech</h1>
-      <span>OFFICIAL</span>
-    </div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#products">Shop</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header id="header">
+    <div class="logo">Zenvy-Tech</div>
+    <button class="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
 
-  <section class="hero" id="home">
-    <h2>Pakistan's Trusted Online Marketplace</h2>
-    <p>Gadgets, Home Essentials, Beauty, Toys & More - Best Prices in Karachi with Cash on Delivery</p>
-    <a href="#products" class="btn">Start Shopping 🛍️</a>
-    <div class="stats">
-      <div class="stat"><h3>0</h3><p>Products</p></div>
-      <div class="stat"><h3>1000+</h3><p>Happy Customers</p></div>
-      <div class="stat"><h3>24/7</h3><p>Support</p></div>
-      <div class="stat"><h3>COD</h3><p>All Pakistan</p></div>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Zenvy Tech</h1>
     </div>
   </section>
 
   <section class="section" id="products">
-    <div class="section-header">
-      <h2>Featured Products</h2>
-      <p>Handpicked quality products at wholesale prices</p>
+    <h2 class="section-title">Our Collection</h2>
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterProducts('all')">All</button>
+      <button class="filter-btn" onclick="filterProducts('shirts')">Shirts</button>
+      <button class="filter-btn" onclick="filterProducts('suits')">Suits</button>
+      <button class="filter-btn" onclick="filterProducts('polos')">Polos</button>
     </div>
-    <div class="coming-soon">
-      <h3>🚀 Store Setup in Progress</h3>
-      <p>Hum abhi products upload kar rahe hain. Jald hi yahan sab dikhne lagega.<br>WhatsApp pe rabta karein: 03012800023</p>
+    <div class="products" id="productsContainer"></div>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <div class="feature-icon">🚚</div>
+      <h4>Free Shipping</h4>
+      <p>Enjoy free shipping on all orders over PKR 500.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔒</div>
+      <h4>Secure Checkout</h4>
+      <p>Shop with confidence with our secure payment system.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">↻</div>
+      <h4>Easy Returns</h4>
+      <p>Not happy? Return within 14 days hassle-free.</p>
     </div>
   </section>
 
-  <section class="section" style="background:white">
-    <div class="section-header">
-      <h2>Why Shop With Zenvy Tech?</h2>
+  <section class="testimonials">
+    <h2 class="section-title">What Our Customers Say</h2>
+    <div class="testimonial-card">
+      <p>"Amazing quality and fast delivery. Highly recommended!"</p>
+      <div class="author">- Ahsan Raza</div>
     </div>
-    <div class="trust-badges">
-      <div class="badge">
-        <div class="badge-icon">🚚</div>
-        <h4>Fast Delivery</h4>
-        <p>Karachi: 1-2 days<br>Other cities: 3-5 days</p>
-      </div>
-      <div class="badge">
-        <div class="badge-icon">💰</div>
-        <h4>Cash on Delivery</h4>
-        <p>Pay when you receive<br>No advance payment</p>
-      </div>
-      <div class="badge">
-        <div class="badge-icon">✅</div>
-        <h4>Quality Checked</h4>
-        <p>Every item tested<br>Before dispatch</p>
-      </div>
-      <div class="badge">
-        <div class="badge-icon">🔄</div>
-        <h4>Easy Returns</h4>
-        <p>7-day return policy<br>No questions asked</p>
-      </div>
+    <div class="testimonial-card">
+      <p>"Loved the fabric and design. Will shop again soon."</p>
+      <div class="author">- Zara Ahmed</div>
+    </div>
+    <div class="testimonial-card">
+      <p>"The customer support team was super helpful. 10/10!"</p>
+      <div class="author">- Bilal Khan</div>
     </div>
   </section>
 
-  <section class="section" id="contact" style="text-align:center; background:white">
-    <div class="section-header">
-      <h2>Visit Our Store</h2>
-      <p>📍 Napier Quarter, Karachi | WhatsApp: 03012800023</p>
+  <section class="newsletter">
+    <h2>Subscribe to Our Newsletter</h2>
+    <p>Get the latest updates, offers, and fashion tips.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!')">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      <h3>5000</h3>
+      <p>Happy Customers</p>
     </div>
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps?q=Napier+Quarter+Karachi&output=embed" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <div class="stat">
+      <h3>1200</h3>
+      <p>Orders Delivered</p>
+    </div>
+    <div class="stat">
+      <h3>250</h3>
+      <p>Products in Store</p>
+    </div>
+  </section>
+
+  <section class="brands">
+    <h2>Trusted by Top Brands</h2>
+    <div class="brand-logos">
+      <div style="font-size:24px; font-weight:bold">ZARA</div>
+      <div style="font-size:24px; font-weight:bold; color:#c41e3a">H&M</div>
+      <div style="font-size:24px; font-weight:bold">NIKE</div>
+      <div style="font-size:20px; font-weight:bold; background:#c41e3a; color:white; padding:5px 15px; border-radius:4px">Levi's</div>
+      <div style="font-size:24px">adidas</div>
     </div>
   </section>
 
   <footer>
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>Zenvy Tech</h4>
-        <p>Pakistan's trusted online marketplace for quality products at wholesale prices. Serving Karachi since 2024.</p>
-        <p style="margin-top:15px">📞 03012800023<br>📍 Napier Quarter, Karachi</p>
-      </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <a href="#home">Home</a>
-        <a href="#products">All Products</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h4>Customer Service</h4>
-        <a href="#">Shipping Policy</a>
-        <a href="#">Returns & Refunds</a>
-        <a href="#">Privacy Policy</a>
-      </div>
-      <div class="footer-col">
-        <h4>Payment Methods</h4>
-        <p>✓ Cash on Delivery</p>
-        <p>✓ Easypaisa</p>
-        <p>✓ JazzCash</p>
-        <p>✓ Bank Transfer</p>
-      </div>
+    <div class="footer-logo">
+      <h3>Zeyvo</h3>
+      <p>Innovating the digital world, one line at a time.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-links">
+      <h4>Contact Us</h4>
+      <a href="mailto:info@codhaus.com">Email: info@codhaus.com</a>
+      <a href="tel:+921234567890">Phone: +92 123 456 7890</a>
+    </div>
+    <div class="footer-social">
+      <a href="#">f</a>
+      <a href="#">in</a>
+      <a href="#">t</a>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Zenvy Tech. All Rights Reserved. | Made with ❤️ in Karachi</p>
+      © 2025 Codhaus. All rights reserved.
     </div>
   </footer>
-<script>
-let cart = [];
-let currentFilter = 'all';
 
+  <a href="https://wa.me/923012800023" class="whatsapp-float" target="_blank">
+    <svg viewBox="0 0 32"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.396-.631.645-.972.354-.486.808-1.073 1.265-1.6.19-.22.35-.476.21-.776-.148-.32-1.018-2.45-1.392-3.357-.375-.91-.755-.734-1.043-.734-.267 0-.573 0-.88 0-.307 0-.805.11-1.23.553-.424.443-1.61 1.573-1.61 3.833 0 2.26 1.65 4.448 1.88 4.756.23.308 3.095 4.77 7.496 6.684.83.36 1.47.573 1.97.733.83.263 1.586.226 2.182.138.67-.1 2.057-.84 2.346-1.65.29-.81.29-1.504.203-1.65-.086-.146-.31-.233-.65-.406z"/></svg>
+  </a>
+
+<script>
 const products = [
-  {
-    id: 1, 
-    name: 'Nova Foldable Hair Dryer NV-1290', 
-    price: 1100,
-    oldPrice: 1200,
-    desc: `Foldable Hair Dryer 1000W\nCompact and powerful for travel use\nPink & Blue colors available`, 
-    category: 'electronics', 
-    img: 'images/hairdryer.jpg'
-  },
-  {
-    id: 2, 
-    name: 'M90 Enc Ear Buds with USB Output', 
-    price: 1700,
-    oldPrice: 2000,
-    desc: `HIFI SOUND\nIntelligent noise reduction\nTouch Control\nWith Box Packing`, 
-    category: 'electronics', 
-    img: 'images/earbuds.jpg'
-  },
-  {
-    id: 3, 
-    name: 'Nikkah Dupatta - White Embroidery', 
-    price: 1100,
-    oldPrice: 1200,
-    desc: `White Nikkah Dupatta\nEmbroidery Nikkah Duppatta\nMaking Required 3 Working Days\nPayment Advance`, 
-    category: 'home', 
-    img: 'images/dupatta-white.jpg'
-  },
-  {
-    id: 4, 
-    name: 'Nikkah Dupatta - Purple Embroidery', 
-    price: 1100,
-    oldPrice: 1200,
-    desc: `Purple Nikkah Dupatta\nEmbroidery Nikkah Duppatta\nMaking Required 3 Working Days\nPayment Advance`, 
-    category: 'home', 
-    img: 'images/dupatta-purple.jpg'
-  },
-  {
-    id: 5, 
-    name: 'Laptop Foldable and Adjustable Table', 
-    price: 1800,
-    oldPrice: 2000,
-    desc: `Foldable legs - Take it anywhere\n60cm x 40cm x 28cm\nAdjustable height\nPerfect for bed or sofa`, 
-    category: 'home', 
-    img: 'images/laptoptable.jpg'
-  },
-  {
-    id: 6, 
-    name: 'Mini Pocket Massager', 
-    price: 1100,
-    oldPrice: 1200,
-    desc: `Rechargeable\nOne-touch start button\nLightweight body, easy to handle\nPortable relief device`, 
-    category: 'beauty', 
-    img: 'images/massager.jpg'
-  },
-  {
-    id: 7, 
-    name: '400ml Nice Water Bottle', 
-    price: 600,
-    oldPrice: 700,
-    desc: `Glass Thermal insulation\nSeal Leak-proof 400ml\nMultiple colors: Pink, Green, White, Blue`, 
-    category: 'home', 
-    img: 'images/bottle.jpg'
-  },
-  {
-    id: 8, 
-    name: 'Silicon Face Ice Roller', 
-    price: 600,
-    oldPrice: 700,
-    desc: `Silicon Face Ice Roller\nMultiple colors available\nFor face massage & cooling\nLive Pic`, 
-    category: 'beauty', 
-    img: 'images/iceroller.jpg'
-  },
-  {
-    id: 9, 
-    name: 'Kids Erasable Tracing Book', 
-    price: 700,
-    oldPrice: 1000,
-    desc: `Kids Erasable Tracing Book\nPen Control Training for young children\nLeft and right brain development\nWith markers & eraser`, 
-    category: 'kids', 
-    img: 'images/tracingbook.jpg'
-  }
+  {id:1, name:'wedding suit', price:39.99, category:'suits', img:'https://images.unsplash.com/photo-1507679799987-c737795e4719?w=600'},
+  {id:2, name:'Smart Polo', price:39.99, category:'polos', img:'https://images.unsplash.com/photo-1586363104862-3a5e2ab60d6d?w=600'},
+  {id:3, name:'Oxford Shirt', price:29.99, category:'shirts', img:'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600'}
 ];
 
 function displayProducts(filter = 'all') {
   const container = document.getElementById('productsContainer');
-  if(!container) return;
+  const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
   
-  const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
-  
-  if(filteredProducts.length === 0) {
-    container.innerHTML = `
-      <div class="empty-state">
-        <h3>Products Coming Soon</h3>
-        <p>Hum abhi products upload kar rahe hain. Jald hi yahan sab dikhne lagega.</p>
-      </div>
-    `;
-    return;
-  }
-  
-  container.innerHTML = filteredProducts.map(product => `
-    <div class="card">
-      <div class="card-img-wrap">
-        <img src="${product.img}" alt="${product.name}" onerror="this.parentElement.innerHTML='No Image Yet'">
-      </div>
-      <div class="card-content">
-        <div class="card-category">${product.category}</div>
-        <h3>${product.name}</h3>
-        <div class="card-price-wrap">
-          <span class="price">Rs. ${product.price}</span>
-          ${product.oldPrice ? `<span class="old-price">Rs. ${product.oldPrice}</span>` : ''}
-          ${product.oldPrice ? `<span class="discount">${Math.round((1 - product.price/product.oldPrice)*100)}% OFF</span>` : ''}
-        </div>
+  container.innerHTML = filtered.map(p => `
+    <div class="product-card">
+      <img src="${p.img}" alt="${p.name}" class="product-img">
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <div class="price">$${p.price}</div>
       </div>
     </div>
   `).join('');
 }
 
+function filterProducts(cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  displayProducts(cat);
+}
+
+// Header scroll effect
+window.addEventListener('scroll', () => {
+  const header = document.getElementById('header');
+  if(window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
 displayProducts();
 </script>
+
 </body>
 </html>
