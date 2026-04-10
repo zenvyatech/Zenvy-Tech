@@ -159,6 +159,129 @@
       <p>© 2026 Zenvy Tech. All Rights Reserved. | Made with ❤️ in Karachi</p>
     </div>
   </footer>
+<script>
+let cart = [];
+let currentFilter = 'all';
 
+const products = [
+  {
+    id: 1, 
+    name: 'Nova Foldable Hair Dryer NV-1290', 
+    price: 1100,
+    oldPrice: 1200,
+    desc: `Foldable Hair Dryer 1000W\nCompact and powerful for travel use\nPink & Blue colors available`, 
+    category: 'electronics', 
+    img: 'images/hairdryer.jpg'
+  },
+  {
+    id: 2, 
+    name: 'M90 Enc Ear Buds with USB Output', 
+    price: 1700,
+    oldPrice: 2000,
+    desc: `HIFI SOUND\nIntelligent noise reduction\nTouch Control\nWith Box Packing`, 
+    category: 'electronics', 
+    img: 'images/earbuds.jpg'
+  },
+  {
+    id: 3, 
+    name: 'Nikkah Dupatta - White Embroidery', 
+    price: 1100,
+    oldPrice: 1200,
+    desc: `White Nikkah Dupatta\nEmbroidery Nikkah Duppatta\nMaking Required 3 Working Days\nPayment Advance`, 
+    category: 'home', 
+    img: 'images/dupatta-white.jpg'
+  },
+  {
+    id: 4, 
+    name: 'Nikkah Dupatta - Purple Embroidery', 
+    price: 1100,
+    oldPrice: 1200,
+    desc: `Purple Nikkah Dupatta\nEmbroidery Nikkah Duppatta\nMaking Required 3 Working Days\nPayment Advance`, 
+    category: 'home', 
+    img: 'images/dupatta-purple.jpg'
+  },
+  {
+    id: 5, 
+    name: 'Laptop Foldable and Adjustable Table', 
+    price: 1800,
+    oldPrice: 2000,
+    desc: `Foldable legs - Take it anywhere\n60cm x 40cm x 28cm\nAdjustable height\nPerfect for bed or sofa`, 
+    category: 'home', 
+    img: 'images/laptoptable.jpg'
+  },
+  {
+    id: 6, 
+    name: 'Mini Pocket Massager', 
+    price: 1100,
+    oldPrice: 1200,
+    desc: `Rechargeable\nOne-touch start button\nLightweight body, easy to handle\nPortable relief device`, 
+    category: 'beauty', 
+    img: 'images/massager.jpg'
+  },
+  {
+    id: 7, 
+    name: '400ml Nice Water Bottle', 
+    price: 600,
+    oldPrice: 700,
+    desc: `Glass Thermal insulation\nSeal Leak-proof 400ml\nMultiple colors: Pink, Green, White, Blue`, 
+    category: 'home', 
+    img: 'images/bottle.jpg'
+  },
+  {
+    id: 8, 
+    name: 'Silicon Face Ice Roller', 
+    price: 600,
+    oldPrice: 700,
+    desc: `Silicon Face Ice Roller\nMultiple colors available\nFor face massage & cooling\nLive Pic`, 
+    category: 'beauty', 
+    img: 'images/iceroller.jpg'
+  },
+  {
+    id: 9, 
+    name: 'Kids Erasable Tracing Book', 
+    price: 700,
+    oldPrice: 1000,
+    desc: `Kids Erasable Tracing Book\nPen Control Training for young children\nLeft and right brain development\nWith markers & eraser`, 
+    category: 'kids', 
+    img: 'images/tracingbook.jpg'
+  }
+];
+
+function displayProducts(filter = 'all') {
+  const container = document.getElementById('productsContainer');
+  if(!container) return;
+  
+  const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
+  
+  if(filteredProducts.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <h3>Products Coming Soon</h3>
+        <p>Hum abhi products upload kar rahe hain. Jald hi yahan sab dikhne lagega.</p>
+      </div>
+    `;
+    return;
+  }
+  
+  container.innerHTML = filteredProducts.map(product => `
+    <div class="card">
+      <div class="card-img-wrap">
+        <img src="${product.img}" alt="${product.name}" onerror="this.parentElement.innerHTML='No Image Yet'">
+      </div>
+      <div class="card-content">
+        <div class="card-category">${product.category}</div>
+        <h3>${product.name}</h3>
+        <div class="card-price-wrap">
+          <span class="price">Rs. ${product.price}</span>
+          ${product.oldPrice ? `<span class="old-price">Rs. ${product.oldPrice}</span>` : ''}
+          ${product.oldPrice ? `<span class="discount">${Math.round((1 - product.price/product.oldPrice)*100)}% OFF</span>` : ''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+displayProducts();
+</script>
 </body>
 </html>
